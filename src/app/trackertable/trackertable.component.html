@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Description</th>
+      <th scope="col">Income</th>
+      <th scope="col">Expenditure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of records">
+      <th scope="row"></th>
+      <td>{{ record.desc }}</td>
+      <td>{{ record.amount }}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>  

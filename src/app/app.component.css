@@ -1,0 +1,9 @@
+.myStyle{
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 20px;
+    height: 600px;
+    border: solid 3px #ddd;
+    border-radius: 5px;
+    box-shadow: 5px 10px #ededed;
+}
