@@ -13,7 +13,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form #detailsForm = 'ngForm'>
+          <form #detailsForm = 'ngForm'> 
             <div class="form-group">
               <label for="description" class="form-label">
                 Add the description here
@@ -52,10 +52,10 @@
                 </div>          
               </div>
             </div>              
-          </form>
+          </form> 
         </div>
       </div>
     </div>
   </div>
 
-  <trackertable></trackertable>
+  <trackertable [amount]="amnt" [description]="desp"></trackertable>

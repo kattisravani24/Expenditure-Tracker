@@ -1,27 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'trackertable',
   templateUrl: './trackertable.component.html',
   styleUrls: ['./trackertable.component.css']
 })
-export class TrackertableComponent implements OnInit {
-  /* @Input() receivedDesc:string;
-  @Input() receivedAmount:number; */
+export class TrackertableComponent implements OnInit, OnChanges {
+  @Input()
+  amount:any
 
-  @Input() receivedDesc:any;
-  @Input() receivedAmount:any;
+  @Input()
+  description:any
 
-  records:{desc:string, amount:number}[]
+  records:{desc:string, amount:number}[] = [];
 
   ngOnChanges() {
-    this.records.push(this.receivedDesc, this.receivedAmount);
+    if(this.amount && this.description){
+      this.records.push({desc:this.description, amount:this.amount});
+      console.log(this.records);
+    }
   }
-
   ngOnInit(){ 
     
   }
-
-  
-
 }
