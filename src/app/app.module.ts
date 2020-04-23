@@ -7,13 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddincomeComponent } from './addincome/addincome.component';
-import { TrackertableComponent } from './trackertable/trackertable.component';
+import { TrackertableComponent } from './trackertable/trackertable.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     AddincomeComponent,
-    TrackertableComponent
+    TrackertableComponent 
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'addincome',
@@ -13,7 +13,6 @@ export class AddincomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  disabled: 'cursor:'
   sendDetails(desc, amount){
     this.amnt = amount.value;
     this.desp= desc.value;
