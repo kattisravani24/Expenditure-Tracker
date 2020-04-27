@@ -1,7 +1,17 @@
-
-  <h3>Expenditure Tracker</h3>
-  <button type="button" class="btn btn-primary mr-3" (click)="staticModal.show()">Add Income</button><button type="button" class="btn btn-primary" (click)="staticModal2.show()">Add Expenditure</button>
-  <br/><br/>
+<div class="myTitle">
+  <h3>Expenditure Tracker</h3> 
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <button type="button" class="btn income-btn mr-3" (click)="staticModal.show()" style="width: 100%;">Add Income</button>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <button type="button" class="btn expense-btn" (click)="staticModal2.show()" style="width: 100%;">Add Expenditure</button>
+  </div>
+  <!-- <div class="col-sm-12 col-md-6 col-lg-6"></div> -->
+</div>
+  <br/>
+  <!-- Income Modal -->
   <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
       tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
     <div class="modal-dialog">
@@ -16,7 +26,7 @@
           <form #detailsForm = 'ngForm'> 
             <div class="form-group">
               <label for="description" class="form-label">
-                Add the description here
+                <h6>Add the description here</h6>
               </label>
               <textarea 
                 name="description" 
@@ -29,7 +39,7 @@
             </div>
             <div class="form-group">
               <label for="income">
-                Add Income Amount in rupees
+                <h6>Add Income Amount in rupees</h6>
               </label>
               <input 
                 class="form-control" 
@@ -44,10 +54,10 @@
               <div class="col-sm-6">
                 <div class="row">
                   <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary" style="width: 100%;" (click)="sendIncome(desc, amount); staticModal.hide(); detailsForm.reset()" [disabled]="detailsForm.invalid">Save</button>
+                    <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendIncome(desc, amount); staticModal.hide(); detailsForm.reset()" [disabled]="detailsForm.invalid">Save</button>
                   </div>
                   <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary" style="width: 100%;"  (click)="staticModal.hide()">Cancel</button>
+                    <button type="button" class="btn cancel-btn" style="width: 100%;"  (click)="staticModal.hide()">Cancel</button>
                   </div>
                 </div>          
               </div>
@@ -58,7 +68,7 @@
     </div>
   </div>
 
-
+  <!-- Expense Modal -->
   <div class="modal fade" bsModal #staticModal2="bs-modal" [config]="{backdrop: 'static'}"
       tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
     <div class="modal-dialog">
@@ -73,7 +83,7 @@
           <form #detailsForm2 = 'ngForm'> 
             <div class="form-group">
               <label for="description" class="form-label">
-                Add the description here
+                <h6>Add the description here</h6>
               </label>
               <textarea 
                 name="description" 
@@ -86,7 +96,7 @@
             </div>
             <div class="form-group">
               <label for="Expenditure">
-                Add Expenditure Amount in rupees
+                <h6>Add Expenditure Amount in rupees</h6>
               </label>
               <input 
                 class="form-control" 
@@ -101,10 +111,10 @@
               <div class="col-sm-6">
                 <div class="row">
                   <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary" style="width: 100%;" (click)="sendExpense(desc2, expense); staticModal2.hide(); detailsForm2.reset()" [disabled]="detailsForm2.invalid">Save</button>
+                    <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendExpense(desc2, expense); staticModal2.hide(); detailsForm2.reset()" [disabled]="detailsForm2.invalid">Save</button>
                   </div>
                   <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary" style="width: 100%;"  (click)="staticModal2.hide()">Cancel</button>
+                    <button type="button" class="btn cancel-btn" style="width: 100%;"  (click)="staticModal2.hide()">Cancel</button>
                   </div>
                 </div>          
               </div>
@@ -114,4 +124,5 @@
       </div>
     </div>
   </div>
+
   <trackertable [amount]="amnt"  [description]="desp" [expenseAmount]="exAmnt" [description2]="desp2"></trackertable>

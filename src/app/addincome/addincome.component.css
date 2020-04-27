@@ -1,3 +1,44 @@
 button:disabled {
     cursor: not-allowed;
 }
+.myTitle{
+    text-align: center;
+    background-color: #349c6a;
+    padding: 10px;
+    border-radius: 25px 0 0 0;
+    margin-bottom: 20px;
+    border:solid 2px #2a2f3c; 
+    color: #2a2f3c;
+}
+.income-btn, .expense-btn, .save-btn, .cancel-btn{
+    background-color: #2a2f3c;
+    border-radius: 25px 0 0 0;
+    color: #349c6a;
+    border: solid 2px #2a2f3c;
+    transition: 0.5s;
+}
+.income-btn:hover, .expense-btn:hover, .save-btn:hover, .cancel-btn:hover{
+    border: solid 2px #2a2f3c;
+    background-color: #349c6a;
+    color:  #2a2f3c;
+}
+button:disabled:hover{
+    border: solid 2px #2a2f3c;
+    color: #349c6a;
+    background-color: #2a2f3c;
+}
+.modal-content{
+    background-color: #349c6a;
+    color: #2a2f3c;
+    border-radius: 25px 0 0 0;
+    border: solid 2px #2a2f3c;
+}
+.modal-header{
+    border-bottom: 1px solid #2a2f3c
+} 
+.form-control{
+    background-color: #2a2f3c;
+    border-color: #2a2f3c;
+    color: #349c6a;
+    border-radius: 25px 0 0 0;
+}
