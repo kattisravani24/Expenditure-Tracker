@@ -67,5 +67,8 @@ export class TrackertableComponent implements OnInit, OnChanges {
     /* else if((this.totalIncome - this.totalExpense) > 0 && (this.totalIncome - this.totalExpense) != 0){
       this.yippee = true;
     } */
+    for(var i=0; i<this.records.length;i++){
+      console.log(this.records[i].amount);
+    }
   }
 }
