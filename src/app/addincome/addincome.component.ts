@@ -11,7 +11,7 @@ export class AddincomeComponent implements OnInit {
  exAmnt:any;
  myIncomeDate:any;
  myExpenseDate:any;
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
   sendIncome(desc, amount, incomeDate){
     this.desp= desc.value;

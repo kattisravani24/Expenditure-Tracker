@@ -63,13 +63,14 @@
             <div class="form-group">
               <input 
                 type="text"
+                autocomplete="off"
                 class="form-control" 
                 placeholder="Datepicker"
                 bsDatepicker
                 name="inDate"
                 #incomeDate
                 required
-                [bsConfig]="{ adaptivePosition: true }">
+                [bsConfig]="{ adaptivePosition: true, isAnimated: true }">
             </div>
             <div class="row">
               <div class="col-sm-6"></div>
@@ -146,7 +147,8 @@
                 class="form-control"
                 bsDatepicker
                 name="exDate"
-                #expenseDate>
+                #expenseDate
+                [bsConfig]="{ adaptivePosition: true }">
             </div>
             <div class="row">
               <div class="col-sm-6"></div>
@@ -167,4 +169,4 @@
     </div>
   </div>
   
-  <trackertable [amount]="amnt"  [description]="desp" [expenseAmount]="exAmnt" [description2]="desp2" [incomeDate]="myIncomeDate"></trackertable>
+  <trackertable [amount]="amnt"  [description]="desp" [expenseAmount]="exAmnt" [description2]="desp2" [incomeDate]="myIncomeDate" [expenseDate]="myExpenseDate"></trackertable>

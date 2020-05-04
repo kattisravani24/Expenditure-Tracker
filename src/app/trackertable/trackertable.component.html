@@ -40,20 +40,21 @@
       <th scope="col">Date</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-record>
+  <ng-template pTemplate="body" let-record  let-i="rowIndex+1">
     <tr>
-      <td>Index</td>
+      <td>{{i}}</td>
       <td>{{record.desc}}</td>
-      <td>{{record.amount}}</td>
-      <td>{{record.exAmount}}</td>
-      <td>{{record.myIncomeDate}}</td>
+      <td>{{record.amount | currency:'INR'}}</td>
+      <td>{{record.exAmount | currency:'INR'}}</td>
+      <td>{{record.date}}</td>
     </tr>
   </ng-template>
   <ng-template pTemplate="footer">
-    <tr>
+    <tr> 
       <td></td>
-      <td><b>Balance</b></td>
-      <td rowspan="2"></td>
+      <td><b>Total and Balance</b></td>
+      <td>{{totalIncome | currency:'INR'}}</td>
+      <td>{{totalExpense | currency:'INR'}}</td>
       <td><strong>{{totalIncome - totalExpense  | currency:'INR'}}</strong></td>
     </tr>
   </ng-template>
@@ -62,5 +63,5 @@
 <div class="alert alert-primary savings container" >
    <h6 class="text-success"> Total Savings: {{totalIncome  | currency:'INR'}} - {{totalExpense | currency:'INR'}} = {{ totalIncome - totalExpense | currency:'INR'}}</h6>
    <h6 class="alert alert-danger" *ngIf="draft" >Running out of Balance</h6>
-   <h6 class="alert alert-success" *ngIf="yippee">You doing a Great Job!!!</h6>
+   <!-- <h6 class="alert alert-success" *ngIf="yippee">You doing a Great Job!!!</h6> -->
 </div> 

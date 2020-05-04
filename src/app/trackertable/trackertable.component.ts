@@ -12,7 +12,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
   @Input() incomeDate:any
   @Input() expenseDate:any
 
-  draft:boolean;
+  draft:boolean = false;
   yippee:boolean;
   incomeArr:any[] = [];
   uniqueIncomeArr:any[] =[];
@@ -31,7 +31,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
     if(this.amount && this.description && this.incomeDate){
       this.records.push({desc:this.description, amount:this.amount, exAmount:this.temp, date:this.incomeDate});
       this.amount='';
-      this.description='';
+      this.description=''; 
     }
     else if(this.expenseAmount && this.description2 && this.expenseDate){
       this.records.push({desc:this.description2, amount:this.temp, exAmount:this.expenseAmount, date:this.expenseDate});
@@ -64,9 +64,13 @@ export class TrackertableComponent implements OnInit, OnChanges {
     this.totalExpense = this.uniqueExpenseArr. reduce(function(c, d){
       return c + d;
       }, 0); 
+
     this.totalSaving = this.totalIncome - this.totalExpense;
+
     if((this.totalIncome - this.totalExpense) < 0){
       this.draft = true;
+    }else{
+      this.draft = false;
     }
     /* else if((this.totalIncome - this.totalExpense) > 0 && (this.totalIncome - this.totalExpense) != 0){
       this.yippee = true;
