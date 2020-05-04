@@ -1,11 +1,18 @@
-table thead th, table td {
+/* table thead th, table td {
     border-bottom: 2px solid #2a2f3c;
     border-top: 2px solid #2a2f3c;
 }
 table{
     color: #2a2f3c;
-}
+} */
 .savings{
     position: static; 
     bottom: 10px; 
 } 
+.table .header th {
+    border-bottom: 2px solid #2a2f3c;
+    border-top: 2px solid #2a2f3c;
+}
+.table{
+    color: #2a2f3c;
+}

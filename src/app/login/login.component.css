@@ -1,0 +1,56 @@
+main{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  
+}
+#loginForm{
+  width: 50%;
+  padding: 20px;
+  margin-top: 10%;
+  /* border: solid 1px #D7A534; 
+  box-shadow: 1px 1px 1px 1px #D7A534;*/
+}
+#username, #password{
+  padding: 10px;
+  border: none;
+  background-color: #fff;
+  width: 100%;
+  border-bottom: solid 1px grey;
+  color: #D7A534;
+}
+#username:focus, #password:focus{
+  outline: none;
+  border-bottom: solid 1px #D7A534;
+  transition: linear 0.2s;
+}
+::placeholder {
+  color: #D7A534;
+}
+.wrapper{
+  position: relative; 
+}
+.feild-icon {
+  color:#D7A534;
+  position: absolute;
+  right: 3%;
+  border-top: 50%;
+  top: 30%;
+} 
+#loginBtn{
+  background-color: #fff;
+  color: #D7A534;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 0px;
+  border: solid 1px #D7A534;
+}
+#loginBtn:focus{
+  box-shadow: none;
+}
+
+@media (min-width: 320px) and (max-width: 768px){
+  #loginForm{
+    width: 100%;
+  }
+}

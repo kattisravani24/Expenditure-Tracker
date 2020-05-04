@@ -1,17 +1,11 @@
 .myStyle{
-    background-color: #349c6a;
-    /* margin-top: 30px; */
     padding: 20px;
     height: auto;
-    border: solid 3px #2a2f3c;
+    border: solid 2px #2a2f3c;
     border-radius: 5px;
     box-shadow: 3px #2a2f3c;
-    border-radius: 25px 0 0 0;
+    border-radius: 15px 0 0 0;
 }
 main{
     margin: 50px 0;
-}
-#quote{
-    text-align: right;
-    color: #2a2f3c;
 }

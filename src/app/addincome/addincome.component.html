@@ -1,14 +1,25 @@
 <div class="myTitle">
-  <h3>Expenditure Tracker</h3> 
+  <h3>Expenditure Tracker <div id="quote">
+    <h6>Beware of little expenses.</h6> 
+    <h6>A small leak will sink a grate ship</h6>
+  </div></h3> 
 </div>
 <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-6">
-    <button type="button" class="btn income-btn mr-3" (click)="staticModal.show()" style="width: 100%;">Add Income</button>
+    <button 
+      type="button" 
+      class="btn income-btn mr-3" 
+      (click)="staticModal.show()" 
+      style="width: 100%;"
+      >Add Income</button>
   </div>
   <div class="col-sm-12 col-md-6 col-lg-6">
-    <button type="button" class="btn expense-btn" (click)="staticModal2.show()" style="width: 100%;">Add Expenditure</button>
+    <button 
+      type="button" 
+      class="btn expense-btn" 
+      (click)="staticModal2.show()" 
+      style="width: 100%;">Add Expenditure</button>
   </div>
-  <!-- <div class="col-sm-12 col-md-6 col-lg-6"></div> -->
 </div>
   <br/>
   <!-- Income Modal -->
@@ -49,15 +60,36 @@
                 #amount='ngModel'
                 required><br/>
             </div>
+            <div class="form-group">
+              <input 
+                type="text"
+                class="form-control" 
+                placeholder="Datepicker"
+                bsDatepicker
+                name="inDate"
+                #incomeDate
+                required
+                [bsConfig]="{ adaptivePosition: true }">
+            </div>
             <div class="row">
               <div class="col-sm-6"></div>
               <div class="col-sm-6">
                 <div class="row">
                   <div class="col-sm-6">
-                    <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendIncome(desc, amount); staticModal.hide(); detailsForm.reset()" [disabled]="detailsForm.invalid">Save</button>
+                    <button 
+                      type="button" 
+                      class="btn save-btn" 
+                      style="width: 100%;" 
+                      (click)="sendIncome(desc, amount, incomeDate); staticModal.hide(); detailsForm.reset()" 
+                      [disabled]="detailsForm.invalid"
+                      >Save</button>
                   </div>
                   <div class="col-sm-6">
-                    <button type="button" class="btn cancel-btn" style="width: 100%;"  (click)="staticModal.hide()">Cancel</button>
+                    <button 
+                      type="button" 
+                      class="btn cancel-btn" 
+                      style="width: 100%;"  
+                      (click)="staticModal.hide()">Cancel</button>
                   </div>
                 </div>          
               </div>
@@ -106,12 +138,22 @@
                 #expense='ngModel'
                 required><br/>
             </div>
+            <div class="form-group" id="dp">
+              <input 
+              class="form-control"
+                type="text"
+                placeholder="Datepicker"
+                class="form-control"
+                bsDatepicker
+                name="exDate"
+                #expenseDate>
+            </div>
             <div class="row">
               <div class="col-sm-6"></div>
               <div class="col-sm-6">
                 <div class="row">
                   <div class="col-sm-6">
-                    <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendExpense(desc2, expense); staticModal2.hide(); detailsForm2.reset()" [disabled]="detailsForm2.invalid">Save</button>
+                    <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendExpense(desc2, expense, expenseDate); staticModal2.hide(); detailsForm2.reset()" [disabled]="detailsForm2.invalid">Save</button>
                   </div>
                   <div class="col-sm-6">
                     <button type="button" class="btn cancel-btn" style="width: 100%;"  (click)="staticModal2.hide()">Cancel</button>
@@ -124,5 +166,5 @@
       </div>
     </div>
   </div>
-
-  <trackertable [amount]="amnt"  [description]="desp" [expenseAmount]="exAmnt" [description2]="desp2"></trackertable>
+  
+  <trackertable [amount]="amnt"  [description]="desp" [expenseAmount]="exAmnt" [description2]="desp2" [incomeDate]="myIncomeDate"></trackertable>
