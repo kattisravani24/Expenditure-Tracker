@@ -13,6 +13,15 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {RouterModule} from'@angular/router';
+import { ChartholderComponent } from './chartholder/chartholder.component';
+import { PiechartComponent } from './charts/piechart/piechart.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { Pie2Component } from './charts/pie2/pie2.component';
+import { SendComponent } from './records/send/send.component';
+import { ReceiveComponent } from './records/receive/receive.component';
+
+import { RecordsService } from './shared/services/records.service';
+
 
 
 @NgModule({
@@ -20,7 +29,13 @@ import {RouterModule} from'@angular/router';
     AppComponent,
     AddincomeComponent,
     TrackertableComponent,
-    LoginComponent
+    LoginComponent,
+    ChartholderComponent,
+    PiechartComponent,
+    NavbarComponent,
+    Pie2Component,
+    SendComponent,
+    ReceiveComponent
   ],
   imports: [ 
     BrowserModule,
@@ -40,11 +55,15 @@ import {RouterModule} from'@angular/router';
         {
           path:'addincome',
           component: AddincomeComponent
+        },
+        {
+          path:'chartholder',
+          component: ChartholderComponent
         }
       ]
       )
   ],
-  providers: [],
+  providers: [RecordsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

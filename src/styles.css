@@ -1,9 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-body{
-     /* background-color: #DCCC85;  */
-    background-image: url(src\assets\images\bg1.png); 
-    background-position: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
+
+body{    
+    /* background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; 
-    /* background-image: url('bg.png'); */
+    background-size: cover;
+     background-image: url('src\assets\images\dark-money.jpg'); 
+    position: relative; */
+    background: #323232;
+    font-family: 'Roboto', sans-serif;
 }
+    

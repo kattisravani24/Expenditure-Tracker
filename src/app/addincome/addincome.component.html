@@ -1,9 +1,3 @@
-<div class="myTitle">
-  <h3>Expenditure Tracker <div id="quote">
-    <h6>Beware of little expenses.</h6> 
-    <h6>A small leak will sink a grate ship</h6>
-  </div></h3> 
-</div>
 <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-6">
     <button 
@@ -18,7 +12,8 @@
       type="button" 
       class="btn expense-btn" 
       (click)="staticModal2.show()" 
-      style="width: 100%;">Add Expenditure</button>
+      style="width: 100%;"
+      >Add Expenditure</button>
   </div>
 </div>
   <br/>
@@ -29,13 +24,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 id="dialog-static-name" class="modal-title pull-left">Add your Income details</h4>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <button type="button" class="btn close-btn pull-right" aria-label="Close" (click)="staticModal.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form #detailsForm = 'ngForm'> 
-            <div class="form-group">
+            <div class="form-group"><!--Income Description-->
               <label for="description" class="form-label">
                 <h6>Add the description here</h6>
               </label>
@@ -48,7 +43,7 @@
                 #desc='ngModel'
                 required></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group"><!--Income Amount-->
               <label for="income">
                 <h6>Add Income Amount in rupees</h6>
               </label>
@@ -60,12 +55,14 @@
                 #amount='ngModel'
                 required><br/>
             </div>
-            <div class="form-group">
+            <div class="form-group"><!--Income Date-->
+              <label for="inDate" class="form-label">
+                <h6>Select Date</h6>
+              </label>
               <input 
                 type="text"
                 autocomplete="off"
                 class="form-control" 
-                placeholder="Datepicker"
                 bsDatepicker
                 name="inDate"
                 #incomeDate
@@ -76,12 +73,12 @@
               <div class="col-sm-6"></div>
               <div class="col-sm-6">
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-6"><!--Send Income-->
                     <button 
                       type="button" 
                       class="btn save-btn" 
                       style="width: 100%;" 
-                      (click)="sendIncome(desc, amount, incomeDate); staticModal.hide(); detailsForm.reset()" 
+                      (click)="sendIncome(desc, amount, incomeDate); detailsForm.reset(); staticModal.hide(); " 
                       [disabled]="detailsForm.invalid"
                       >Save</button>
                   </div>
@@ -108,13 +105,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 id="dialog-static-name" class="modal-title pull-left">Add your Expenditure details</h4>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal2.hide()">
+          <button type="button" class="btn close-btn pull-right" aria-label="Close" (click)="staticModal2.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form #detailsForm2 = 'ngForm'> 
-            <div class="form-group">
+            <div class="form-group"><!--Expenditure Description-->
               <label for="description" class="form-label">
                 <h6>Add the description here</h6>
               </label>
@@ -127,7 +124,7 @@
                 #desc2='ngModel'
                 required></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group"><!--Expenditure Amount-->
               <label for="Expenditure">
                 <h6>Add Expenditure Amount in rupees</h6>
               </label>
@@ -139,7 +136,10 @@
                 #expense='ngModel'
                 required><br/>
             </div>
-            <div class="form-group" id="dp">
+            <div class="form-group" id="dp"><!--Expenditure Date-->
+              <label for="exDate" class="form-label">
+                <h6>Select Date</h6>
+              </label>
               <input 
               class="form-control"
                 type="text"

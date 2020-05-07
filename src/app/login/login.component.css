@@ -4,53 +4,67 @@ main{
   justify-content: center;
   
 }
+small{
+  color: indianred;
+}
 #loginForm{
   width: 50%;
   padding: 20px;
   margin-top: 10%;
-  /* border: solid 1px #D7A534; 
-  box-shadow: 1px 1px 1px 1px #D7A534;*/
 }
 #username, #password{
   padding: 10px;
   border: none;
-  background-color: #fff;
+  background-color: #323232;
   width: 100%;
   border-bottom: solid 1px grey;
-  color: #D7A534;
+  color: #fff;
 }
 #username:focus, #password:focus{
   outline: none;
-  border-bottom: solid 1px #D7A534;
+  border-bottom: solid 1px #14ffec;
   transition: linear 0.2s;
 }
 ::placeholder {
-  color: #D7A534;
+  color: #fff;
+  font-size: 14px;
 }
 .wrapper{
   position: relative; 
 }
 .feild-icon {
-  color:#D7A534;
+  color:#fff;
   position: absolute;
   right: 3%;
-  border-top: 50%;
+  /* border-top: 50%; */
   top: 30%;
+  text-shadow: 1px 1px 13px #fff;
 } 
 #loginBtn{
-  background-color: #fff;
-  color: #D7A534;
+  border: #0d7377 solid 1px;
+  background-color: #323232;
+  color: #fff;
   width: 100%;
   margin-top: 15px;
   border-radius: 0px;
-  border: solid 1px #D7A534;
+  padding: 7px;
+  transition: 0.2s;
 }
-#loginBtn:focus{
-  box-shadow: none;
+#loginBtn:hover{
+  background-color: #0d7377;
+  cursor: pointer;
+} 
+#loginBtn:disabled{
+  cursor: not-allowed;
+  border: #0d7377 solid 1px;
+  background-color: #323232;
+  color: grey;
 }
-
 @media (min-width: 320px) and (max-width: 768px){
   #loginForm{
+    width: 100%;
+  }
+  #loginBtn{
     width: 100%;
   }
 }

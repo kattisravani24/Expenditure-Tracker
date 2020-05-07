@@ -1,38 +1,59 @@
 button:disabled {
     cursor: not-allowed;
 }
-.myTitle{
-    text-align: center;
-    padding: 10px;
-    border-radius: 15px 0 0 0;
-    margin-bottom: 20px;
-    border:solid 1px #2a2f3c; 
-    color: #2a2f3c;
+.income-btn, .expense-btn, .save-btn, #loginBtn, .cancel-btn, button:disabled:hover, .modal-body, .modal-content, .modal-header, .form-control, ::ng-deep .bs-datepicker-body table th, ::ng-deep .bs-datepicker-body table td{
+    color: #fff;
 }
-#quote{
-    text-align: left;
-    color: #2a2f3c;
+.income-btn, .expense-btn, .save-btn, #loginBtn, .cancel-btn, .modal-header, .form-control{
+    border-radius: 0;
 }
-.income-btn, .expense-btn, .save-btn, .cancel-btn{
-    border-radius: 15px 0 0 0;
-    color: #2a2f3c;
-    border: solid 1px #2a2f3c;
+.income-btn, .expense-btn, .save-btn, #loginBtn{
+    background-color: #0d7377;
     transition: 0.5s;
 }
-button:disabled:hover{
-    border: solid 1px #2a2f3c;
-    color: #2a2f3c;
+.cancel-btn{
+    border: #0d7377 solid 1px;
+    background-color: #323232;
 }
-.modal-content{
-    color: #2a2f3c;
-    border-radius: 15px 0 0 0;
-    border: solid 1px #2a2f3c;
+.cancel-btn:hover{
+    background-color: #0d7377;
+}
+.modal-body, .close-btn{
+    background-color: #323232;
+}
+.close-btn{
+    color: #fff;
+}
+.close-btn:focus{
+    box-shadow: none;
 }
 .modal-header{
-    border-bottom: 1px solid #2a2f3c
+    border-bottom: 1px solid #14ffec;
+    background-color: #323232;
 } 
 .form-control{
-    border-color: #2a2f3c;
-    color: #2a2f3c;
-    border-radius: 15px 0 0 0;
+    background-color: #323232;
+    border: none;
+    border-bottom: solid 1px #fff;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: #14ffec;
+}
+/* Date Picker */
+
+::ng-deep .theme-green .bs-datepicker-head, ::ng-deep .theme-green .bs-datepicker-body table td span.selected{
+    background-color: #0d7377;
+}
+::ng-deep .theme-green .bs-datepicker-body{
+    border: none;
+}
+::ng-deep .bs-datepicker-container {
+    background-color: #323232;
+}
+::ng-deep .bs-datepicker-body table td:hover, ::ng-deep .bs-datepicker-body table td span.is-other-month{
+    color: #0d7377;
+}
+ ::ng-deep .theme-green .bs-datepicker-body table td.week span{
+    color: #14ffec;
 }

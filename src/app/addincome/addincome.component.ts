@@ -18,7 +18,7 @@ export class AddincomeComponent implements OnInit {
     this.amnt = amount.value;  
     this.myIncomeDate = incomeDate.value;
   }
-   sendExpense(desc2, expense, expenseDate){
+   sendExpense(desc2, expense, expenseDate){ 
     this.desp2= desc2.value;
     this.exAmnt=expense.value;
     this.myExpenseDate = expenseDate.value;

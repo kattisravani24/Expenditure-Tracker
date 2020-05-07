@@ -1,15 +1,19 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { RecordsService } from '../shared/services/records.service';
 @Component({
   selector: 'trackertable',
   templateUrl: './trackertable.component.html',
   styleUrls: ['./trackertable.component.css']
 })
 export class TrackertableComponent implements OnInit, OnChanges {
+
+  constructor(private recordServices: RecordsService) { }
+
   @Input() amount:any 
   @Input() description:any
   @Input() expenseAmount:any
   @Input() description2:any
-  @Input() incomeDate:any
+  @Input() incomeDate:any 
   @Input() expenseDate:any
 
   draft:boolean = false;
@@ -27,6 +31,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
 
   ngOnInit(){ }
   ngOnChanges() {
+
     // Checking for the description, income and expense and pushing the values in to the table
     if(this.amount && this.description && this.incomeDate){
       this.records.push({desc:this.description, amount:this.amount, exAmount:this.temp, date:this.incomeDate});
@@ -76,4 +81,8 @@ export class TrackertableComponent implements OnInit, OnChanges {
       this.yippee = true;
     } */
   }
+
+  /* sendRecords(records: {}[]){
+    this.recordServices.sendRecords(records);
+  } */
 }

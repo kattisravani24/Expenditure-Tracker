@@ -1,12 +1,18 @@
+<!-- <send></send>
+<receive></receive> -->
+
 <body>
+  <div *ngIf="router.url !== '/'">
+    <navbar></navbar>
+    <div id="quote">
+      <h5>Beware of little expenses.</h5> 
+      <h5>A small leak will sink a grate ship</h5>
+    </div>
+  </div>
   <div class="container">
     <main>
         <div class="col-sm-12 col-md-12">
-          <div class="myStyle">
-            <!-- <login></login> -->
-            <!-- <addincome></addincome> -->
-            <router-outlet></router-outlet>
-          </div>
+          <router-outlet></router-outlet>
         </div>
     </main>
   </div>
