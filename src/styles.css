@@ -10,3 +10,6 @@ body{
     font-family: 'Roboto', sans-serif;
 }
     
+.errorMsg{
+    color: indianred;
+}

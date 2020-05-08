@@ -11,7 +11,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
 
   @Input() amount:any 
   @Input() description:any
-  @Input() expenseAmount:any
+  @Input() expenseAmount:any 
   @Input() description2:any
   @Input() incomeDate:any 
   @Input() expenseDate:any
@@ -81,8 +81,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
       this.yippee = true;
     } */
   }
-
-  /* sendRecords(records: {}[]){
-    this.recordServices.sendRecords(records);
-  } */
+  sendRecords(){
+    this.recordServices.sendRecords(this.records);
+  }
 }

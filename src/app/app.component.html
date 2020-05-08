@@ -1,6 +1,3 @@
-<!-- <send></send>
-<receive></receive> -->
-
 <body>
   <div *ngIf="router.url !== '/'">
     <navbar></navbar>
@@ -11,9 +8,11 @@
   </div>
   <div class="container">
     <main>
+      <div class="row">
         <div class="col-sm-12 col-md-12">
           <router-outlet></router-outlet>
         </div>
+      </div>
     </main>
   </div>
-</body>
+</body> 

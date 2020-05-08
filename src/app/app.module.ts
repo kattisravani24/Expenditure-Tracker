@@ -8,7 +8,10 @@ import { AddincomeComponent } from './addincome/addincome.component';
 import { TrackertableComponent } from './trackertable/trackertable.component'; 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {TableModule} from 'primeng/table';
+import {CheckboxModule} from 'primeng/checkbox';
+
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -21,8 +24,7 @@ import { SendComponent } from './records/send/send.component';
 import { ReceiveComponent } from './records/receive/receive.component';
 
 import { RecordsService } from './shared/services/records.service';
-
-
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { RecordsService } from './shared/services/records.service';
     NavbarComponent,
     Pie2Component,
     SendComponent,
-    ReceiveComponent
+    ReceiveComponent,
+    FiltersComponent
   ],
   imports: [ 
     BrowserModule,
@@ -45,6 +48,7 @@ import { RecordsService } from './shared/services/records.service';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TableModule,
+    CheckboxModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       [

@@ -48,6 +48,12 @@
   </ng-template>
 </p-table>
 
+<hr>
+
+<button class="btn btn-success" (click)="sendRecords()"> Print Records</button>
+
+<receive></receive>
+
 <div class="alert alert-primary container">
    <h6 class="text-success"> Total Savings: {{totalIncome  | currency:'INR'}} - {{totalExpense | currency:'INR'}} = {{ totalIncome - totalExpense | currency:'INR'}}</h6>
    <h6 class="alert alert-danger" *ngIf="draft" >Running out of Balance</h6>
