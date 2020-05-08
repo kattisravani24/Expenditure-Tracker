@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {TableModule} from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
+import {CalendarModule} from 'primeng/calendar';
+
 
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,9 +24,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Pie2Component } from './charts/pie2/pie2.component';
 import { SendComponent } from './records/send/send.component';
 import { ReceiveComponent } from './records/receive/receive.component';
+import { FiltersComponent } from './filters/filters.component';
 
 import { RecordsService } from './shared/services/records.service';
-import { FiltersComponent } from './filters/filters.component';
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -51,6 +54,7 @@ import { environment } from '../environments/environment';
     BsDatepickerModule.forRoot(),
     TableModule,
     CheckboxModule,
+    CalendarModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       [

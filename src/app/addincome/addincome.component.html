@@ -69,7 +69,7 @@
                   <label for="inDate" class="form-label">
                     <h6>Select Date</h6>
                   </label>
-                  <input 
+                  <!-- <input 
                     type="text"
                     autocomplete="off"
                     class="form-control" 
@@ -78,10 +78,20 @@
                     #incomeDate
                     formControlName="incomeDate"
                     required
-                    [bsConfig]="{ adaptivePosition: true, isAnimated: true }">
-                    <small *ngIf="incomeDate.touched && incomeDate.invalid">
+                    [bsConfig]="{ adaptivePosition: true, isAnimated: true }"> -->
+                    <p-calendar 
+                      [(ngModel)]="value" 
+                      [inline]="true"
+                      autocomplete="off"
+                      class="form-control" 
+                      name="inDate"
+                      #incomeDate
+                      formControlName="incomeDate"
+                      required
+                      ></p-calendar>
+                    <!-- <small *ngIf="incomeDate.touched && incomeDate.invalid">
                       <small class="errorMsg" *ngIf="incomeDate.errors.required">Please select the date</small>
-                    </small>
+                    </small> -->
                 </div>
                 <div class="row">
                   <div class="col-sm-6"></div>

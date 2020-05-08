@@ -13,6 +13,8 @@ export class AddincomeComponent implements OnInit {
  myIncomeDate:any;
  myExpenseDate:any;
 
+ value: Date;
+
  incomeForm:FormGroup;
  expenseForm:FormGroup;
   ngOnInit(): void { 
