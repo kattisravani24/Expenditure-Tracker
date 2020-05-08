@@ -11,5 +11,6 @@ body{
 }
     
 .errorMsg{
-    color: indianred;
+    color: red;
+    font-size: 14px;
 }

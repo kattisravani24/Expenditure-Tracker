@@ -10,20 +10,24 @@
     border: none;
     padding: 8px;
     background-color: #323232;
-    border-bottom: solid 1px #0d7377;
+    border-bottom: 1px solid #14ffec;
+    width: 30% !important;
 }
 #filterInput:focus{
     outline: none;
+    border-bottom: 2px solid #14ffec;
+    transition: all 0.5s;
+    width: 35% !important;
 }
 ::placeholder {
     color: #fff;
     font-size: 13px;
   }
 ::ng-deep body .ui-table .ui-table-thead > tr > th{
-    background-color: #0d7377;
+    background: transparent;
     color: #fff;
     border:none ;
-    border-bottom: solid 1px #0d7377;
+    border-bottom: solid 1px #14ffec;
 }
 ::ng-deep body .ui-table .ui-table-tfoot > tr > td,
 ::ng-deep body .ui-table .ui-table-tbody > tr > td{
@@ -31,16 +35,27 @@
     background: #333;
     font-weight: 100;
     border: none;
-    border-bottom: solid 1px #0d7377;
+    border-bottom: solid 1px #14ffec;
 }
 /* Alert */
 .alert-primary{
-    background-color: #0d7377;
+    background: transparent;
     border: none;
-    border-radius: 0;
+    border-radius: 5px;
     color: #fff;
+    text-align: center;
     margin-top: 15%;
+    border:2px solid #14ffec;
+    font-size: 13px;
 }
 .text-success{
     color: #fff !important;
+}
+
+::ng-deep body .ui-table .ui-table-caption{
+ padding: 0;
+}
+
+::ng-deep .ui-table-wrapper{
+    margin-top: 3%;
 }

@@ -26,7 +26,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
   totalExpense:any;
   totalSaving:any;
   temp = 0.00;
-
+ 
   records:{desc:string, amount:number, exAmount:number, date:any}[] = [];
 
   ngOnInit(){ }

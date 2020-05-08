@@ -38,7 +38,7 @@ main{
   text-shadow: 1px 1px 13px #fff;
 } 
 #loginBtn{
-  border: #0d7377 solid 1px;
+  border: #14ffec solid 1px;
   background-color: #323232;
   color: #fff;
   width: 100%;
@@ -48,12 +48,12 @@ main{
   transition: 0.2s;
 }
 #loginBtn:hover{
-  background-color: #0d7377;
+  background-color: #14ffec;
   cursor: pointer;
 } 
 #loginBtn:disabled{
   cursor: not-allowed;
-  border: #0d7377 solid 1px;
+  border: #14ffec solid 1px;
   background-color: #323232;
   color: grey;
 }

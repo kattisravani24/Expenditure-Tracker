@@ -1,22 +1,38 @@
 button:disabled {
     cursor: not-allowed;
 }
-.income-btn, .expense-btn, .save-btn, #loginBtn, .cancel-btn, button:disabled:hover, .modal-body, .modal-content, .modal-header, .form-control, ::ng-deep .bs-datepicker-body table th, ::ng-deep .bs-datepicker-body table td{
+ .cancel-btn, button:disabled:hover, .modal-body, .modal-content, .modal-header, .form-control, ::ng-deep .bs-datepicker-body table th, ::ng-deep .bs-datepicker-body table td{
     color: #fff;
-}
+    font-size: 14px;
+} 
 .income-btn, .expense-btn, .save-btn, #loginBtn, .cancel-btn, .modal-header, .form-control{
     border-radius: 0;
 }
 .income-btn, .expense-btn, .save-btn, #loginBtn{
-    background-color: #0d7377;
+    background:transparent;
     transition: 0.5s;
+    border:1px solid #14ffec;
+    color:#fff;
+    border-radius: 5px;
 }
+
+.income-btn:hover, .expense-btn:hover, .save-btn:hover, #loginBtn:hover{
+    background:#14ffec;
+    transition: 0.5s;
+    border:1px solid #14ffec;
+    color:#323232;
+    font-weight: 900;
+
+
+}
+  
+  
 .cancel-btn{
-    border: #0d7377 solid 1px;
+    border: #14ffec solid 1px;
     background-color: #323232;
 }
 .cancel-btn:hover{
-    background-color: #0d7377;
+    background-color: #14ffec;
 }
 .modal-body, .close-btn{
     background-color: #323232;
@@ -43,7 +59,7 @@ button:disabled {
 /* Date Picker */
 
 ::ng-deep .theme-green .bs-datepicker-head, ::ng-deep .theme-green .bs-datepicker-body table td span.selected{
-    background-color: #0d7377;
+    background-color: #14ffec;
 }
 ::ng-deep .theme-green .bs-datepicker-body{
     border: none;
@@ -52,8 +68,12 @@ button:disabled {
     background-color: #323232;
 }
 ::ng-deep .bs-datepicker-body table td:hover, ::ng-deep .bs-datepicker-body table td span.is-other-month{
-    color: #0d7377;
+    color: #14ffec;
 }
  ::ng-deep .theme-green .bs-datepicker-body table td.week span{
     color: #14ffec;
+}
+
+.ng-touched .ng-invalid{
+    border-bottom: 1px solid red !important;
 }
