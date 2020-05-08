@@ -41,6 +41,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
     else if(this.expenseAmount && this.description2 && this.expenseDate){
       this.records.push({desc:this.description2, amount:this.temp, exAmount:this.expenseAmount, date:this.expenseDate});
     }
+    
     //Pushing income values to income array
     for(var i = 0; i < this.records.length; i++){
       this.incomeArr.push(this.records[i].amount);
@@ -52,8 +53,8 @@ export class TrackertableComponent implements OnInit, OnChanges {
       } 
     }
     //Adding Unique Incomes
-    this.totalIncome = this.uniqueIncomeArr. reduce(function(a, b){
-      return a + b;
+    this.totalIncome = this.uniqueIncomeArr.reduce(function(a, b){
+      return Number(a) + Number(b);
       }, 0);
     //Pushing expense values to expense array
     for(var e = 0; e < this.records.length; e++){
@@ -66,8 +67,8 @@ export class TrackertableComponent implements OnInit, OnChanges {
       } 
     }
     //Adding Unique Expenses
-    this.totalExpense = this.uniqueExpenseArr. reduce(function(c, d){
-      return c + d;
+    this.totalExpense = this.uniqueExpenseArr.reduce(function(c, d){
+      return Number(c) + Number(d);
       }, 0); 
 
     this.totalSaving = this.totalIncome - this.totalExpense;

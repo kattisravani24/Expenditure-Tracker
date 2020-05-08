@@ -25,6 +25,8 @@ import { ReceiveComponent } from './records/receive/receive.component';
 
 import { RecordsService } from './shared/services/records.service';
 import { FiltersComponent } from './filters/filters.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { FiltersComponent } from './filters/filters.component';
           component: ChartholderComponent
         }
       ]
-      )
+      ),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [RecordsService],
   bootstrap: [AppComponent]

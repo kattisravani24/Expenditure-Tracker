@@ -1,27 +1,46 @@
+<!-- <li style="color: #fff;" *ngFor="let child of nestedjson; let i = index">
+  <input type="checkbox" [(ngModel)]="child.checked">
+  {{child.name}}
+</li>
+
+<small style="color: #fff;" (click)="clear()" type="submit">Select All</small><br/>
+
+<div *ngFor="let item of selectedValues">
+  <p-checkbox style="color: #fff;" [(ngModel)]="month.checked"></p-checkbox>{{item.value}}
+</div>
+-->
+ 
 <main>
   <div class="row">
     <div class="col-sm-12">
       <h5>Month</h5>
-      <p-checkbox name="Month"></p-checkbox> <span>January</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>February</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>March</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>April</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>May</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>June</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>July</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>August</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>September</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>October</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>November</span><br/>
-      <p-checkbox name="Month"></p-checkbox> <span>December</span><br/>
+      <ng-container *ngIf="selected">
+        <small (click)="selectAllMonths()">Select All</small>
+      </ng-container>
+      <ng-container *ngIf="deselected">
+        <small (click)="deselecteAllMonths()">Clear All</small>
+      </ng-container>
+      <div *ngFor="let month of months">
+        <ng-container *ngIf="month.shown">
+          <input type="checkbox" [(ngModel)]="month.checked">
+          <!-- <p-checkbox name="month" [(ngModel)]="month.checked"></p-checkbox>  -->
+          <span>{{month.name}}</span>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="displayed">
+        <small (click)="showMore()">Show More</small>
+      </ng-container>
+      <ng-container *ngIf="hidden">
+        <small (click)="showLess()">Show Less</small>
+      </ng-container>
       <h5>User</h5>
-      <p-checkbox name="User"></p-checkbox> <span>Ahemmed</span><br/>
-      <p-checkbox name="User"></p-checkbox> <span>Dileep</span><br/>
-      <p-checkbox name="User"></p-checkbox> <span>Malathi</span><br/>
-      <p-checkbox name="User"></p-checkbox> <span>Suman</span>
+      <div *ngFor="let user of users">
+      <p-checkbox name="user"></p-checkbox> <span>{{user}}</span>
+      </div>
       <h5>Type</h5>
-      <p-checkbox name="User"></p-checkbox> <span>Income</span><br/>
-      <p-checkbox name="User"></p-checkbox> <span>Expense</span>
+        <div *ngFor="let type of types">
+      <p-checkbox name="type"></p-checkbox> <span>{{type}}</span>
+      </div>
     </div>
   </div>
 </main>

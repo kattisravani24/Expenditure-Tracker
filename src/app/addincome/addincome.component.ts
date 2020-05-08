@@ -9,8 +9,7 @@ export class AddincomeComponent implements OnInit {
  amnt:any;
  desp:any;
  desp2:any;     
-
- exAmnt:any;
+ exAmnt:any; 
  myIncomeDate:any;
  myExpenseDate:any;
 
@@ -51,16 +50,17 @@ export class AddincomeComponent implements OnInit {
   get expenditureDate(){
     return this.expenseForm.get('expenditureDate');
   }
-  
 
   sendIncome(desc, amount, incomeDate){
     this.desp= desc.value;
     this.amnt = amount.value;  
     this.myIncomeDate = incomeDate.value;
+    //console.log(this.desp, this.amnt, this.myIncomeDate);
   }
    sendExpense(desc2, expense, expenseDate){ 
     this.desp2= desc2.value;
     this.exAmnt=expense.value;
     this.myExpenseDate = expenseDate.value;
+    //console.log(this.desp2, this.exAmnt, this.myExpenseDate);
   } 
 } 

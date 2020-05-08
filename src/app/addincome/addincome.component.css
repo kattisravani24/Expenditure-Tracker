@@ -10,7 +10,7 @@ button:disabled {
 }
 .income-btn, .expense-btn, .save-btn, #loginBtn{
     background:transparent;
-    transition: 0.5s;
+    transition: ease 0.5s;
     border:1px solid #14ffec;
     color:#fff;
     border-radius: 5px;

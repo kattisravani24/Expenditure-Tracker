@@ -24,9 +24,9 @@
         id="password"
         name="password"
         formControlName="password"/><br/>
-        <small class="text-danger" *ngIf="password.touched && password.invalid">
-          <small class="text-danger" *ngIf="password.errors.required">Last Name is Required</small>
-          <small *ngIf="password.errors.minlength">Should be atleast 8 characters</small>
+        <small *ngIf="password.touched && password.invalid">
+          <small class="errorMsg"*ngIf="password.errors.required">Last Name is Required</small>
+          <small class="errorMsg" *ngIf="password.errors.minlength">Should be atleast 8 characters</small>
         </small>
     </div>
     <div class="row">
