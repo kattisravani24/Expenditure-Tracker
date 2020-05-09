@@ -8,7 +8,7 @@ export class RecordsService {
   constructor() { }
   private subject = new Subject<any>();
 
-  sendRecords(record:{desc:string, amount:number, exAmount:number, date:any}[]){
+  sendRecords(record:{desc:string, amount:number, exAmount:number, date:any, user:any}[]){
     this.subject.next(record);
   } 
 

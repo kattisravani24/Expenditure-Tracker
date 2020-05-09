@@ -116,3 +116,11 @@ button:disabled:hover {
     background: #323232;
     color: #fff;
 }
+::ng-deep body .ui-dropdown:not(.ui-state-disabled).ui-state-focus{
+    box-shadow: none;
+    border-color: #a6a6aa;
+}
+::ng-deep body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight{
+    color: #14ffec;
+    background: #323232;
+}

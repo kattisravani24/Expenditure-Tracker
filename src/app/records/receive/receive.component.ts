@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./receive.component.css']
 })
 export class ReceiveComponent implements OnInit {
-  receivedRecords: {desc:string, amount:number, exAmount:number, date:any}[] = [];
+  receivedRecords: {desc:string, amount:number, exAmount:number, date:any, user:any}[] = [];
   subscription: Subscription;
   income:boolean = false;
   expense:boolean = false;

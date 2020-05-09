@@ -39,12 +39,13 @@ expenseForm:FormGroup;
     this.incomeForm = new FormGroup({
       incomeDescription: new FormControl('',Validators.required),
       incomeAmount: new FormControl('', Validators.required),
-      incomeDate:new FormControl('', Validators.required)
+      validateIncomeDate:new FormControl('', Validators.required),
+      validateIncomeUser: new FormControl('',Validators.required)
     })
     this.expenseForm = new FormGroup({
       expenseDescription: new FormControl('',Validators.required),
       expenseAmount: new FormControl('', Validators.required),
-      expenditureDate: new FormControl('', Validators.required)
+      validateExpenseDate: new FormControl('', Validators.required)
     })
   }
   get incomeDescription(){
@@ -53,17 +54,21 @@ expenseForm:FormGroup;
   get incomeAmount(){
     return this.incomeForm.get('incomeAmount');
   }
-  get incomeDate(){
-    return this.incomeForm.get('incomeDate');
+  get validateIncomeDate(){
+    return this.incomeForm.get('validateIncomeDate');
   }
+  get validateIncomeUser(){
+    return this.expenseForm.get('validateIncomeUser');
+  } 
   get expenseDescription(){
     return this.expenseForm.get('expenseDescription');
   }
+  
   get expenseAmount(){
     return this.expenseForm.get('expenseAmount');
   }
-  get expenditureDate(){
-    return this.expenseForm.get('expenditureDate');
+  get validateExpenseDate(){
+    return this.expenseForm.get('validateExpenseDate');
   }
 
   sendIncome(desc, amount, incomeDate, incomeUser){

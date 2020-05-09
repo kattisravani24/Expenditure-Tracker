@@ -1,5 +1,5 @@
 <h6 style="color: #fff;" *ngFor="let record of receivedRecords; let i = index"> 
-    {{record[i].date | date}} - Income {{record[i].amount | currency: 'INR'}}  and Expense {{record[i].exAmount | currency: 'INR'}} ==> {{record[i].desc}}
+  {{record[i].user | uppercase }} : {{record[i].date | date}} - Income {{record[i].amount | currency: 'INR'}}  and Expense {{record[i].exAmount | currency: 'INR'}} ==> {{record[i].desc}} 
 </h6> 
 
 <!-- <div *ngIf="income">
@@ -12,4 +12,4 @@
     <h6 style="color: #fff;" *ngFor="let record of receivedRecords; let i = index">
         Received {{record[i].amount}} from {{record[i].desc}} on dated {{record[i].date}}
     </h6> 
-</div> -->
+</div> --> 

@@ -25,24 +25,26 @@
       <!-- Income Modal -->
       <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
           tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-dialog"><!--Income Modal Dailog-->
+          <div class="modal-content"><!--Income Modal Content-->
+            <div class="modal-header"><!--Income Modal Header-->
               <h4 id="dialog-static-name" class="modal-title pull-left">Add your Income details</h4>
               <button type="button" class="btn close-btn pull-right" aria-label="Close" (click)="staticModal.hide()">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
-            <div class="modal-body">
-              <form [formGroup]="incomeForm"> 
-                <div class="form-group">
+            </div><!--Income Modal Header-->
+            <div class="modal-body"> <!--Income Modal Body-->
+              <form [formGroup]="incomeForm"> <!--Income Form-->
+                <div class="form-group"><!--Income User-->
                   <p-dropdown 
                     required
                     [options]="users"
                     [(ngModel)]="selectedUser"
-                    #incomeUser 
-                    [ngModelOptions]="{standalone: true}"> 
-                  </p-dropdown>
+                    #incomeUser
+                    formControlName="validateIncomeUser"></p-dropdown>
+                  <!-- <small *ngIf="validateIncomeUser.touched && validateIncomeUser.invalid">
+                    <small class="errorMsg" *ngIf="validateIncomeUser.errors.required">Description is Required</small>
+                  </small>   -->
                 </div>
                 <div class="form-group"><!--Income Description-->
                   <label for="description" class="form-label"> 
@@ -54,9 +56,7 @@
                     style="resize: none;"
                     #desc
                     formControlName="incomeDescription"
-                    required
-                    
-                    ></textarea>
+                    required></textarea>
                     <small *ngIf="incomeDescription.touched && incomeDescription.invalid">
                       <small class="errorMsg" *ngIf="incomeDescription.errors.required">Description is Required</small>
                     </small>
@@ -80,32 +80,21 @@
                   <label for="inDate" class="form-label">
                     <h6>Select Date</h6>
                   </label>
-                  <!-- <input 
-                    type="text"
-                    autocomplete="off"
-                    class="form-control" 
-                    bsDatepicker
-                    name="inDate"
-                    #incomeDate
-                    formControlName="incomeDate"
-                    required
-                    [bsConfig]="{ adaptivePosition: true, isAnimated: true }"> -->
                     <p-calendar 
                       autocomplete="off"
                       class="form-control" 
                       name="inDate"
                       #incomeDate
-                      formControlName="incomeDate"
+                      formControlName="validateIncomeDate" 
                       required
                       [style]="{'width':'100%'}" 
                       [inputStyle]="{'width':'100%'}"
                       ></p-calendar>
-                    <!-- <small *ngIf="incomeDate.touched && incomeDate.invalid">
-                      <small class="errorMsg" *ngIf="incomeDate.errors.required">Please select the date</small>
-                    </small> -->
-                </div>
-                
-
+                    <small *ngIf="validateIncomeDate.touched && validateIncomeDate.invalid">
+                      <small class="errorMsg" *ngIf="validateIncomeDate.errors.required">Please select the date</small>
+                    </small> 
+                </div>                
+                <!--Income Send and Cancel Buttons -->
                 <div class="row">
                   <div class="col-sm-6"></div>
                   <div class="col-sm-6">
@@ -129,25 +118,25 @@
                     </div>          
                   </div>
                 </div>              
-              </form> 
-            </div>
-          </div>
-        </div>
+              </form><!--Income Form-->
+            </div><!--Income Modal Body-->
+          </div><!--Income Modal Content-->
+        </div><!--Income Modal Dailog-->
       </div>
       <!-- Expense Modal -->
       <div class="modal fade" bsModal #staticModal2="bs-modal" [config]="{backdrop: 'static'}"
           tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-dialog"><!--Expense Modal Dailog-->
+          <div class="modal-content"><!--Expense Modal Content-->
+            <div class="modal-header"><!--Expense Modal Header-->
               <h4 id="dialog-static-name" class="modal-title pull-left">Add your Expenditure details</h4>
               <button type="button" class="btn close-btn pull-right" aria-label="Close" (click)="staticModal2.hide()">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
-            <div class="modal-body">
-              <form [formGroup]="expenseForm"> 
-                <div class="form-group">
+            </div><!--Expense Modal Header-->
+            <div class="modal-body"><!--Expense Modal Body-->
+              <form [formGroup]="expenseForm"> <!--Expense Form-->
+                <div class="form-group"><!--Expense Users-->
                   <p-dropdown #dd
                     [options]="users"
                     [(ngModel)]="selectedUser"
@@ -155,7 +144,7 @@
                     [ngModelOptions]="{standalone: true}"> 
                   </p-dropdown>
                 </div>
-                <div class="form-group"><!--Expenditure Description-->
+                <div class="form-group"><!--Expense Description-->
                   <label for="description" class="form-label">
                     <h6>Add the description here</h6>
                   </label>
@@ -186,22 +175,13 @@
                       <small class="errorMsg" *ngIf="expenseAmount.errors.required">Enter Expense Amount</small>
                     </small>
                 </div>
-                <div class="form-group" id="dp"><!--Expenditure Date-->
+                <!--Expenditure Date-->
+                <!-- <div class="form-group" id="dp">
                   <label for="exDate" class="form-label">
                     <h6>Select Date</h6>
                   </label>
-                  <!-- <p-calendar 
-                      autocomplete="off"
-                      class="form-control" 
-                      name="inDate"
-                      #expenseDate
-                      formControlName="expenseDate"
-                      required
-                      [style]="{'width':'100%'}" 
-                      [inputStyle]="{'width':'100%'}"
-                      ></p-calendar> -->
                   <input 
-                  class="form-control"
+                    class="form-control"
                     type="text"
                     placeholder="Datepicker" 
                     class="form-control"
@@ -210,17 +190,37 @@
                     name="exDate"
                     #expenseDate
                     formControlName="expenditureDate"
-                    [bsConfig]="{ adaptivePosition: true }">
+                    [bsConfig]="{ adaptivePosition: true }"> 
                     <small *ngIf="expenditureDate.touched && expenditureDate.invalid">
                       <small class="errorMsg" *ngIf="expenditureDate.errors.required">Please select the date</small>
                     </small> 
-                </div>
+                </div> -->
+                <div class="form-group"><!--Expense Date-->
+                  <label for="inDate" class="form-label">
+                    <h6>Select Date</h6>
+                  </label>
+                    <p-calendar 
+                      autocomplete="off"
+                      class="form-control" 
+                      name="exDate"
+                      #expenseDate
+                      formControlName="validateExpenseDate"
+                      required
+                      [style]="{'width':'100%'}" 
+                      [inputStyle]="{'width':'100%'}"
+                      ></p-calendar>
+                    <small *ngIf="validateExpenseDate.touched && validateExpenseDate.invalid">
+                      <small class="errorMsg" *ngIf="validateExpenseDate.errors.required">Please select the date</small>
+                    </small> 
+                </div> 
+                <!--Expense Send and Cancel Buttons -->
                 <div class="row">
                   <div class="col-sm-6"></div>
                   <div class="col-sm-6">
                     <div class="row">
                       <div class="col-sm-6">
-                        <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendExpense(desc2, expense, expenseDate, expenseUser); staticModal2.hide(); expenseForm.reset()" [disabled]="expenseForm.invalid">Save</button>
+                        <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendExpense(desc2, expense, expenseDate, expenseUser); staticModal2.hide(); expenseForm.reset()" 
+                        [disabled]="expenseForm.invalid">Save</button>
                       </div>
                       <div class="col-sm-6">
                         <button type="button" class="btn cancel-btn" style="width: 100%;"  (click)="staticModal2.hide()">Cancel</button>
