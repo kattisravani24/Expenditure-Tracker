@@ -108,3 +108,11 @@ button:disabled:hover {
 .error{
     border-bottom: 1px solid red !important;
 }
+::ng-deep body .ui-dropdown {
+    background: #323232;
+    width: 100%;
+}
+::ng-deep body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item{
+    background: #323232;
+    color: #fff;
+}

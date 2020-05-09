@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { SelectItem} from 'primeng/api';
 @Component({
   selector: 'addincome',
   templateUrl: './addincome.component.html',
@@ -12,12 +13,29 @@ export class AddincomeComponent implements OnInit {
  exAmnt:any; 
  myIncomeDate:any; 
  myExpenseDate:any;
+ myIncomeUser:any;
+ myExpenseUser:any;
 
- value: Date;
+//  value: Date;
 
- incomeForm:FormGroup;
- expenseForm:FormGroup;
+users: SelectItem[];
+selectedUser: SelectItem;
+incomeForm:FormGroup;
+expenseForm:FormGroup;
+
+ constructor() {
+    this.users = 
+    [
+      {label: "(Select User)", value: "Select User"},
+      {label: 'Ahemmed', value: 'Ahemmed'},
+      {label: 'Dileep', value: 'Dileep'},
+      {label: 'Suman', value: 'Suman'},
+      {label: 'Malathi', value: 'Malathi'}
+    ];
+  }
+
   ngOnInit(): void { 
+
     this.incomeForm = new FormGroup({
       incomeDescription: new FormControl('',Validators.required),
       incomeAmount: new FormControl('', Validators.required),
@@ -48,14 +66,16 @@ export class AddincomeComponent implements OnInit {
     return this.expenseForm.get('expenditureDate');
   }
 
-  sendIncome(desc, amount, incomeDate){
+  sendIncome(desc, amount, incomeDate, incomeUser){
     this.desp= desc.value;
     this.amnt = amount.value;  
     this.myIncomeDate = incomeDate.value;
+    this.myIncomeUser = incomeUser.value;
   }
-   sendExpense(desc2, expense, expenseDate){ 
+   sendExpense(desc2, expense, expenseDate, expenseUser){ 
     this.desp2= desc2.value;
     this.exAmnt=expense.value;
     this.myExpenseDate = expenseDate.value;
+    this.myExpenseUser = expenseUser.value;
   } 
 } 

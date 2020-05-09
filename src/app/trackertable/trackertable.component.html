@@ -12,6 +12,7 @@ class="table"
   <ng-template pTemplate="header">
     <tr>
       <th scope="col">S.No</th>
+      <th scope="col">User</th>
       <th scope="col">Description</th>
       <th scope="col">Income</th>
       <th scope="col">Expenditure</th>
@@ -21,6 +22,7 @@ class="table"
   <ng-template pTemplate="body" let-record  let-i="rowIndex+1">
     <tr>
       <td>{{i}}</td>
+      <td>{{record.user}}</td>
       <td>{{record.desc}}</td>
       <td>{{record.amount | currency:'INR'}}</td>
       <td>{{record.exAmount | currency:'INR'}}</td>

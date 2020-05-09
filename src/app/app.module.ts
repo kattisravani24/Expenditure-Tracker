@@ -12,7 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
 import {CalendarModule} from 'primeng/calendar';
-
+import {MultiSelectModule} from 'primeng/multiselect';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -55,6 +56,8 @@ import { environment } from '../environments/environment';
     TableModule,
     CheckboxModule,
     CalendarModule,
+    MultiSelectModule,
+    DropdownModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       [

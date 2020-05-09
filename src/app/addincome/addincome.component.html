@@ -35,6 +35,15 @@
             </div>
             <div class="modal-body">
               <form [formGroup]="incomeForm"> 
+                <div class="form-group">
+                  <p-dropdown 
+                    required
+                    [options]="users"
+                    [(ngModel)]="selectedUser"
+                    #incomeUser 
+                    [ngModelOptions]="{standalone: true}"> 
+                  </p-dropdown>
+                </div>
                 <div class="form-group"><!--Income Description-->
                   <label for="description" class="form-label"> 
                     <h6>Add the description here</h6>
@@ -46,6 +55,7 @@
                     #desc
                     formControlName="incomeDescription"
                     required
+                    
                     ></textarea>
                     <small *ngIf="incomeDescription.touched && incomeDescription.invalid">
                       <small class="errorMsg" *ngIf="incomeDescription.errors.required">Description is Required</small>
@@ -94,6 +104,8 @@
                       <small class="errorMsg" *ngIf="incomeDate.errors.required">Please select the date</small>
                     </small> -->
                 </div>
+                
+
                 <div class="row">
                   <div class="col-sm-6"></div>
                   <div class="col-sm-6">
@@ -103,7 +115,8 @@
                           type="submit" 
                           class="btn save-btn" 
                           style="width: 100%;" 
-                          (click)="sendIncome(desc, amount, incomeDate); staticModal.hide(); incomeForm.reset()"  [disabled]= "incomeForm.invalid" 
+                          (click)="sendIncome(desc, amount, incomeDate, incomeUser); staticModal.hide(); incomeForm.reset()"  
+                          [disabled]= "incomeForm.invalid" 
                           >Save</button>
                       </div>
                       <div class="col-sm-6">
@@ -134,6 +147,14 @@
             </div>
             <div class="modal-body">
               <form [formGroup]="expenseForm"> 
+                <div class="form-group">
+                  <p-dropdown #dd
+                    [options]="users"
+                    [(ngModel)]="selectedUser"
+                    #expenseUser 
+                    [ngModelOptions]="{standalone: true}"> 
+                  </p-dropdown>
+                </div>
                 <div class="form-group"><!--Expenditure Description-->
                   <label for="description" class="form-label">
                     <h6>Add the description here</h6>
@@ -169,6 +190,16 @@
                   <label for="exDate" class="form-label">
                     <h6>Select Date</h6>
                   </label>
+                  <!-- <p-calendar 
+                      autocomplete="off"
+                      class="form-control" 
+                      name="inDate"
+                      #expenseDate
+                      formControlName="expenseDate"
+                      required
+                      [style]="{'width':'100%'}" 
+                      [inputStyle]="{'width':'100%'}"
+                      ></p-calendar> -->
                   <input 
                   class="form-control"
                     type="text"
@@ -182,14 +213,14 @@
                     [bsConfig]="{ adaptivePosition: true }">
                     <small *ngIf="expenditureDate.touched && expenditureDate.invalid">
                       <small class="errorMsg" *ngIf="expenditureDate.errors.required">Please select the date</small>
-                    </small>
+                    </small> 
                 </div>
                 <div class="row">
                   <div class="col-sm-6"></div>
                   <div class="col-sm-6">
                     <div class="row">
                       <div class="col-sm-6">
-                        <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendExpense(desc2, expense, expenseDate); staticModal2.hide(); expenseForm.reset()" [disabled]="expenseForm.invalid">Save</button>
+                        <button type="button" class="btn save-btn" style="width: 100%;" (click)="sendExpense(desc2, expense, expenseDate, expenseUser); staticModal2.hide(); expenseForm.reset()" [disabled]="expenseForm.invalid">Save</button>
                       </div>
                       <div class="col-sm-6">
                         <button type="button" class="btn cancel-btn" style="width: 100%;"  (click)="staticModal2.hide()">Cancel</button>
@@ -202,6 +233,6 @@
           </div>
         </div>
       </div>
-      <trackertable [amount]="amnt"  [description]="desp" [expenseAmount]="exAmnt" [description2]="desp2" [incomeDate]="myIncomeDate" [expenseDate]="myExpenseDate"></trackertable>
+      <trackertable [amount]="amnt"  [description]="desp" [expenseAmount]="exAmnt" [description2]="desp2" [incomeDate]="myIncomeDate" [expenseDate]="myExpenseDate" [inUser]="myIncomeUser" [exUser]="myExpenseUser"></trackertable>
   </div>
 </div>
