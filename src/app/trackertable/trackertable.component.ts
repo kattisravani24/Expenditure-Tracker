@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { RecordsService } from '../shared/services/records.service';
+
 @Component({
   selector: 'trackertable',
   templateUrl: './trackertable.component.html',
@@ -84,5 +85,5 @@ export class TrackertableComponent implements OnInit, OnChanges {
   }
   sendRecords(){
     this.recordServices.sendRecords(this.records);
-  }
+  } 
 }

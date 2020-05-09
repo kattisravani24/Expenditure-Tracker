@@ -46,6 +46,7 @@ main{
   border-radius: 0px;
   padding: 7px;
   transition: 0.2s;
+  border-radius: 5px;
 }
 #loginBtn:hover{
   background-color: #14ffec;

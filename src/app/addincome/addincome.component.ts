@@ -10,7 +10,7 @@ export class AddincomeComponent implements OnInit {
  desp:any;
  desp2:any;     
  exAmnt:any; 
- myIncomeDate:any;
+ myIncomeDate:any; 
  myExpenseDate:any;
 
  value: Date;
@@ -23,16 +23,11 @@ export class AddincomeComponent implements OnInit {
       incomeAmount: new FormControl('', Validators.required),
       incomeDate:new FormControl('', Validators.required)
     })
-
-    console.log(this.incomeForm);
-
     this.expenseForm = new FormGroup({
       expenseDescription: new FormControl('',Validators.required),
       expenseAmount: new FormControl('', Validators.required),
       expenditureDate: new FormControl('', Validators.required)
     })
-
-    console.log(this.expenseForm);
   }
   get incomeDescription(){
     return this.incomeForm.get('incomeDescription');
@@ -57,12 +52,10 @@ export class AddincomeComponent implements OnInit {
     this.desp= desc.value;
     this.amnt = amount.value;  
     this.myIncomeDate = incomeDate.value;
-    //console.log(this.desp, this.amnt, this.myIncomeDate);
   }
    sendExpense(desc2, expense, expenseDate){ 
     this.desp2= desc2.value;
     this.exAmnt=expense.value;
     this.myExpenseDate = expenseDate.value;
-    //console.log(this.desp2, this.exAmnt, this.myExpenseDate);
   } 
 } 

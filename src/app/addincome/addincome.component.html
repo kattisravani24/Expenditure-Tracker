@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-6">
         <button 
-          type="button" 
+          type="button"  
           class="btn income-btn mr-3" 
           (click)="staticModal.show()" 
           style="width: 100%;"
@@ -40,12 +40,13 @@
                     <h6>Add the description here</h6>
                   </label> 
                   <textarea 
-                    class="form-control" 
+                    class="form-control incomeTextarea" 
                     rows="5" 
                     style="resize: none;"
                     #desc
                     formControlName="incomeDescription"
-                    required></textarea>
+                    required
+                    ></textarea>
                     <small *ngIf="incomeDescription.touched && incomeDescription.invalid">
                       <small class="errorMsg" *ngIf="incomeDescription.errors.required">Description is Required</small>
                     </small>
@@ -80,14 +81,14 @@
                     required
                     [bsConfig]="{ adaptivePosition: true, isAnimated: true }"> -->
                     <p-calendar 
-                      [(ngModel)]="value" 
-                      [inline]="true"
                       autocomplete="off"
                       class="form-control" 
                       name="inDate"
                       #incomeDate
                       formControlName="incomeDate"
                       required
+                      [style]="{'width':'100%'}" 
+                      [inputStyle]="{'width':'100%'}"
                       ></p-calendar>
                     <!-- <small *ngIf="incomeDate.touched && incomeDate.invalid">
                       <small class="errorMsg" *ngIf="incomeDate.errors.required">Please select the date</small>

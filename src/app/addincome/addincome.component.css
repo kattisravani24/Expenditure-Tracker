@@ -1,14 +1,19 @@
 button:disabled {
     cursor: not-allowed;
 }
- .cancel-btn, button:disabled:hover, .modal-body, .modal-content, .modal-header, .form-control, ::ng-deep .bs-datepicker-body table th, ::ng-deep .bs-datepicker-body table td{
+button:disabled:hover {
+    background: #323232;
+    font-weight: normal;
+    color: #fff;
+}
+ .modal-body, .modal-content, .modal-header, .form-control, ::ng-deep .bs-datepicker-body table th, ::ng-deep .bs-datepicker-body table td{
     color: #fff;
     font-size: 14px;
 } 
-.income-btn, .expense-btn, .save-btn, #loginBtn, .cancel-btn, .modal-header, .form-control{
+.income-btn, .expense-btn, .save-btn, .cancel-btn, .modal-header, .form-control{
     border-radius: 0;
 }
-.income-btn, .expense-btn, .save-btn, #loginBtn{
+.income-btn, .expense-btn, .save-btn{
     background:transparent;
     transition: ease 0.5s;
     border:1px solid #14ffec;
@@ -16,23 +21,22 @@ button:disabled {
     border-radius: 5px;
 }
 
-.income-btn:hover, .expense-btn:hover, .save-btn:hover, #loginBtn:hover{
+.income-btn:hover, .expense-btn:hover, .save-btn:hover{
     background:#14ffec;
     transition: 0.5s;
     border:1px solid #14ffec;
     color:#323232;
     font-weight: 900;
-
-
-}
-  
-  
+}  
 .cancel-btn{
     border: #14ffec solid 1px;
     background-color: #323232;
+    border-radius: 5px;
+    color: #fff;
 }
 .cancel-btn:hover{
     background-color: #14ffec;
+    font-weight: 900;
 }
 .modal-body, .close-btn{
     background-color: #323232;
@@ -73,7 +77,34 @@ button:disabled {
  ::ng-deep .theme-green .bs-datepicker-body table td.week span{
     color: #14ffec;
 }
-
-.ng-touched .ng-invalid{
+::ng-deep body .ui-inputtext{
+    background: transparent;
+    border: none;
+    color: #fff;
+}
+::ng-deep body .ui-inputtext:enabled:focus:not(.ui-state-error){
+    outline: none;
+    box-shadow: none;
+}
+::ng-deep body .ui-datepicker:not(.ui-datepicker-inline) {
+    background: #323232;
+    color: #fff;
+}
+::ng-deep body .ui-datepicker .ui-datepicker-header .ui-datepicker-title {
+    background: #323232;
+    line-height: normal; 
+    color: #fff;
+}
+::ng-deep body .ui-datepicker .ui-datepicker-header{
+    background: transparent;
+}
+::ng-deep body .ui-datepicker:not(.ui-state-disabled) table td a:not(.ui-state-active):not(.ui-state-highlight):hover {
+    background-color: #d0d0d0;
+    color: #000;
+}
+/* .ng-touched .ng-invalid{
+    border-bottom: 1px solid red !important;
+} */
+.error{
     border-bottom: 1px solid red !important;
 }
