@@ -14,6 +14,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {CalendarModule} from 'primeng/calendar';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {DropdownModule} from 'primeng/dropdown';
+import {PasswordModule} from 'primeng/password';
 
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -58,6 +59,7 @@ import { environment } from '../environments/environment';
     CalendarModule,
     MultiSelectModule,
     DropdownModule,
+    PasswordModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       [

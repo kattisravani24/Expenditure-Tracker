@@ -22,6 +22,10 @@ main{
   border-bottom: solid 1px #14ffec;
   transition: linear 0.2s;
 }
+#password:focus{
+  box-shadow: none;
+  border-bottom: solid 1px #14ffec;
+}
 ::placeholder {
   color: #fff;
   font-size: 14px;

@@ -19,11 +19,20 @@
     <div class="wrapper">
       <i class="fa fa-lock feild-icon"></i>
       <input 
+        id="password"
+        type="password" 
+        pPassword 
+        placeholder="Enter Password" 
+        name="password"
+        formControlName="password"
+        autocomplete="off"
+        />
+      <!-- <input 
         type="password" 
         placeholder="Enter Password" 
         id="password"
         name="password"
-        formControlName="password"/><br/>
+        formControlName="password"/> --><br/>
         <small *ngIf="password.touched && password.invalid">
           <small class="errorMsg"*ngIf="password.errors.required">Last Name is Required</small>
           <small class="errorMsg" *ngIf="password.errors.minlength">Should be atleast 8 characters</small>
