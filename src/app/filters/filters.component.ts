@@ -20,6 +20,11 @@ export class FiltersComponent implements OnInit {
   displayedAllUsers:boolean = true;
   hiddenFewUsers:boolean = false;
 
+  selectedAllTypes:boolean = false;
+  deselectedAllTypes:boolean = true;
+
+  selectedValues: string[] = [];
+  uniqueSelecedValues: string[] = [];
 
   constructor() { }
 
@@ -37,6 +42,7 @@ export class FiltersComponent implements OnInit {
       { name:'October', checked:true, shown: false  },
       { name:'November', checked:true , shown: false },
       { name:'December', checked:true , shown: false }
+
     ];
     this.users = [
       { name:'Ahemmed', checked: true, shown: true }, 
@@ -48,21 +54,74 @@ export class FiltersComponent implements OnInit {
       {name:'Income', checked:true}, 
       {name:'Expenditure', checked:true}
     ];
+
+    /* for(var i=0; i<this.months.length; i++){
+      if(this.months[i].checked == true){
+        this.selectedValues.push(this.months[i].name);
+      }
+      
+    }
+
+    for(var i=0; i<this.users.length; i++){
+      if(this.users[i].checked == true){
+        this.selectedValues.push(this.users[i].name);
+      }
+    }
+
+    for(var i=0; i<this.types.length; i++){
+      if(this.types[i].checked == true){
+        this.selectedValues.push(this.types[i].name);
+      }
+    } */
+    console.log(this.selectedValues); 
+
+  }
+
+  getValue(data){
+    
+    if(data.checked === true){
+      this.selectedValues.push(data.value);
+      console.log(this.selectedValues);
+    }
+    if(data.checked == false){
+      this.selectedValues.splice(this.selectedValues.indexOf(data.value), 1);
+      console.log(this.selectedValues.indexOf(data.value));
+      console.log(this.selectedValues);
+    }
+    
+    /* for(var i = 0; i < this.selectedValues.length; i++){
+      if(this.uniqueSelecedValues.indexOf(this.selectedValues[i]) === -1){
+        this.uniqueSelecedValues.push(this.selectedValues[i]);
+      }
+    } */
+    //console.log(this.uniqueSelecedValues);
   }
   /**
-   * To select all months
+   * To select all months/ users
    */
-  selectAllMonths(){
-    this.months.forEach(month => {
-      month.checked = true;
+  selectAll(value){
+    this.months.forEach(value => {
+      value.checked = true;
       this.selectedAllMonths = false;
       this.deselectedAllMonths = true;
+    })
+
+    this.users.forEach(value=>{
+      value.checked = true;
+      this.selectedAllUsers = false;
+      this.deselectedAllUsers = true;
+    })
+
+    this.types.forEach(value=>{
+      value.checked = true;
+      this.selectedAllTypes = false;
+      this.deselectedAllTypes = true;
     })
   }
   /**
    * To deselect all months
    */
-  deselecteAllMonths(){
+  deselecteAll(value){
     this.months.forEach(month => {
       month.checked = false;
       this.selectedAllMonths = true;
@@ -90,17 +149,7 @@ export class FiltersComponent implements OnInit {
         this.displayedAllMonths = true;
       }
     })
-  }
-  /**
-   * To select all users
-   */
-  selectAllUsers(){
-    this.users.forEach(user=> {
-      user.checked = true;
-      this.selectedAllUsers = false;
-      this.deselectedAllUsers = true;
-    })
-  }
+  }  
   /**
    * To deselect all users
    */
@@ -133,4 +182,14 @@ export class FiltersComponent implements OnInit {
       }
     })
   }
+
+  deselecteAllTypess(){
+    this.types.forEach(type => {
+      type.checked = false;
+      this.selectedAllTypes = true;
+      this.deselectedAllTypes = false;
+    })
+  }
+
+  
 }
