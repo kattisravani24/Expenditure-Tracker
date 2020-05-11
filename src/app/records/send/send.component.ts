@@ -12,6 +12,6 @@ export class SendComponent implements OnInit {
   }/*
   sendRecords(){
     this.recordServices.sendRecords([{name:'aadya', age:2}]);
-  } */
+  } */ 
 }
   

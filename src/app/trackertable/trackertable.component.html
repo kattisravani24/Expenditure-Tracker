@@ -17,7 +17,7 @@ class="table"
       <th scope="col">Income</th>
       <th scope="col">Expenditure</th>
       <th scope="col">Date</th>
-    </tr>
+    </tr> 
   </ng-template>
   <ng-template pTemplate="body" let-record  let-i="rowIndex+1">
     <tr> 
@@ -30,6 +30,7 @@ class="table"
     </tr> 
   </ng-template>
 </p-table>
+
 <hr>
 
 <div class="table">
@@ -37,16 +38,19 @@ class="table"
   <h6>Total Expense - {{totalExpense  | currency:'INR'}}</h6>
 </div>
 
-<button class="btn btn-success" (click)="sendRecords()"> Print Records</button>
+<!-- <button class="btn btn-success" (click)="sendRecords()"> Print Records</button> -->
 
-<receive></receive>
+<!-- <receive></receive>  -->
 
 <div class="alert alert-primary container">
    <h6 class="text-success"> Total Savings: {{totalIncome  | currency:'INR'}} - {{totalExpense | currency:'INR'}} = {{ totalIncome - totalExpense | currency:'INR'}}</h6>
    <h6 class="alert alert-danger" *ngIf="draft" >Running out of Balance</h6>
 </div>  
 
-<ul style="color: #fff;">
-  <li>Test</li>
-  <li *ngFor="let value of receivedValues">{{value}}</li>
+<ul style="color: #fff;" *ngFor="let value of receivedValues">
+  <li>{{value}}</li>
 </ul>
+<!-- 
+<ul style="color: #fff;" *ngFor="let arr of dummyArray">
+  <li>{{arr}}</li>
+</ul> -->

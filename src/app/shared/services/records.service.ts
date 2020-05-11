@@ -16,7 +16,7 @@ export class RecordsService {
     return this.subject.asObservable();
   }
 
-  sendSelectedValues(values: any[]){
+  sendSelectedValues(values: string[]){
     this.subject.next(values);
   }
 

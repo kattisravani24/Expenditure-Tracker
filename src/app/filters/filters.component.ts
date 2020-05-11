@@ -25,9 +25,13 @@ export class FiltersComponent implements OnInit {
   deselectedAllTypes:boolean = true;
 
   selectedValues: string[] = [];
-  uniqueSelecedValues: string[] = [];
+  selectedMonths:string[] = [];
+  selectedUsers:string[] = [];
+  selectedTypes:string[] =[];
 
-  constructor(public filterService: RecordsService) { }
+  constructor(private filterService: RecordsService) { 
+    console.log(this.selectedValues);
+  }
 
   ngOnInit(): void {
     this.months = [
@@ -56,26 +60,28 @@ export class FiltersComponent implements OnInit {
       {name:'Expenditure', checked:true}
     ];
 
-    for(var i=0; i<this.months.length; i++){
+    /* for(var i=0; i<this.months.length; i++){
       if(this.months[i].checked == true){
-        this.selectedValues.push(this.months[i].name);
+        this.selectedMonths.push(this.months[i].name);
       }
-      
     }
+    console.log(this.selectedMonths);
 
     for(var i=0; i<this.users.length; i++){
       if(this.users[i].checked == true){
-        this.selectedValues.push(this.users[i].name);
+        this.selectedUsers.push(this.users[i].name);
       }
     }
+    console.log(this.selectedUsers);
 
     for(var i=0; i<this.types.length; i++){
       if(this.types[i].checked == true){
-        this.selectedValues.push(this.types[i].name);
+        this.selectedTypes.push(this.types[i].name);
       }
     } 
-    console.log(this.selectedValues); 
-
+    console.log(this.selectedTypes);
+    this.selectedValues = this.selectedMonths.concat(this.selectedUsers, this.selectedTypes);
+    console.log(this.selectedValues); */
   }
 
   getValue(data){
@@ -85,40 +91,84 @@ export class FiltersComponent implements OnInit {
     }
     if(data.checked == false){
       this.selectedValues.splice(this.selectedValues.indexOf(data.value), 1);
-      console.log(this.selectedValues.indexOf(data.value));
       console.log(this.selectedValues);
     }
-    
-    /* for(var i = 0; i < this.selectedValues.length; i++){
-      if(this.uniqueSelecedValues.indexOf(this.selectedValues[i]) === -1){
-        this.uniqueSelecedValues.push(this.selectedValues[i]);
+    this.users.forEach(val => {
+      if(val.checked == false){
+        this.selectedAllUsers = true;
+        this.deselectedAllUsers = false;
+      }else if(val.checked == true){
+        this.deselectedAllUsers = true;
+        this.selectedAllUsers = false;
       }
-    } */
-    //console.log(this.uniqueSelecedValues);
+    })  
+  this.months.forEach(val => {
+    if(val.checked == false){
+      this.selectedAllMonths = true;
+      this.deselectedAllMonths = false;
+    }else if(val.checked == true){
+      this.deselectedAllMonths = true;
+      this.selectedAllMonths = false;
+    }
+  })
+  this.types.forEach(val => {
+    if(val.checked == false){
+      this.selectedAllTypes = true;
+      this.deselectedAllTypes = false;
+    }else if(val.checked == true){
+      this.deselectedAllTypes = true;
+      this.selectedAllTypes = false;
+    }
+  })  
   }
   /**
    * To select all months
    */
   selectAllMonths(){
-    this.months.forEach(value => {
-      value.checked = true;
+    this.months.forEach(month => {
+      month.checked = true;
       this.selectedAllMonths = false;
       this.deselectedAllMonths = true;
+      if(month.checked == true){
+        this.selectedMonths.push(month.name);
+      } 
+      else if(month.checked == false){
+        this.selectedMonths.length = 0;
+      }
     })
+    console.log(this.selectedMonths);
+    this.selectedValues = this.selectedValues.concat(this.selectedMonths);
+    console.log(this.selectedValues);
   }
   selectAllUSers(){
-    this.users.forEach(value=>{
-      value.checked = true;
+    this.users.forEach(user=>{
+      user.checked = true;
       this.selectedAllUsers = false;
       this.deselectedAllUsers = true;
+      if(user.checked == true){
+        this.selectedUsers.push(user.name);
+      } else if(user.checked == false){
+        this.selectedUsers.length = 0;
+      }
     })
+    console.log(this.selectedUsers);
+    this.selectedValues = this.selectedValues.concat(this.selectedUsers);
+    console.log(this.selectedValues);
   }
   selectAllTypes(){
-    this.types.forEach(value=>{
-      value.checked = true;
+    this.types.forEach(type=>{
+      type.checked = true;
       this.selectedAllTypes = false;
       this.deselectedAllTypes = true;
+      if(type.checked == true){
+        this.selectedTypes.push(type.name);
+      } else if(type.checked == false){
+        this.selectedTypes.length = 0;
+      }
     })
+    console.log(this.selectedTypes);
+    this.selectedValues = this.selectedValues.concat(this.selectedTypes);
+    console.log(this.selectedValues);
   }
   /**
    * To deselect all months
@@ -128,7 +178,37 @@ export class FiltersComponent implements OnInit {
       month.checked = false;
       this.selectedAllMonths = true;
       this.deselectedAllMonths = false;
+      if(month.checked == false){
+        this.selectedMonths.length = 0;
+      }
     })
+    console.log(this.selectedMonths);
+    this.selectedValues.concat(this.selectedMonths);
+  }
+  /**
+   * To deselect all users
+   */
+  deselecteAllUsers(){
+    this.users.forEach(user => {
+      user.checked = false;
+      this.selectedAllUsers = true;
+      this.deselectedAllUsers = false;
+      if(user.checked == false){
+        this.selectedUsers.length = 0;
+      }
+    })  
+    console.log(this.selectedUsers);
+  }
+  deselecteAllTypess(){
+    this.types.forEach(type => {
+      type.checked = false;
+      this.selectedAllTypes = true;
+      this.deselectedAllTypes = false;
+      if(type.checked == false){
+        this.selectedTypes.length = 0;
+      }
+    })
+    console.log(this.selectedTypes);
   }
   /**
    * To show all months
@@ -138,6 +218,16 @@ export class FiltersComponent implements OnInit {
       month.shown = true;
       this.displayedAllMonths = false;
       this.hiddenFewMonths = true;
+    })
+  }
+  /**
+   * to show all users
+   */
+  showMoreUsers(){
+    this.users.forEach(user=>{
+      user.shown = true;
+      this.displayedAllUsers = false;
+      this.hiddenFewUsers = true;
     })
   }
   /**
@@ -153,26 +243,6 @@ export class FiltersComponent implements OnInit {
     })
   }  
   /**
-   * To deselect all users
-   */
-  deselecteAllUsers(){
-    this.users.forEach(user => {
-      user.checked = false;
-      this.selectedAllUsers = true;
-      this.deselectedAllUsers = false;
-    })
-  }
-  /**
-   * to show all users
-   */
-  showMoreUsers(){
-    this.users.forEach(user=>{
-      user.shown = true;
-      this.displayedAllUsers = false;
-      this.hiddenFewUsers = true;
-    })
-  }
-  /**
    * To show only 3 users
    */
   showLessUsers(){
@@ -184,17 +254,9 @@ export class FiltersComponent implements OnInit {
       }
     })
   }
-
-  deselecteAllTypess(){
-    this.types.forEach(type => {
-      type.checked = false;
-      this.selectedAllTypes = true;
-      this.deselectedAllTypes = false;
-    })
-  }
-
+  
   sendSelectedValues(){
     this.filterService.sendSelectedValues(this.selectedValues);
+    console.log(this.selectedValues);
   }
-  
 }

@@ -10,10 +10,13 @@ import { Subscription } from 'rxjs';
 export class TrackertableComponent implements OnInit, OnChanges {
   subscription: Subscription;
   receivedValues:any[] = [];
+  // dummyArray: string[] = ['aa','bb'];
+  
   constructor(private recordServices: RecordsService) { 
     this.subscription = this.recordServices.getSelectedValues().subscribe(data => {
       if(data){
         this.receivedValues.push(data);
+        console.log(this.receivedValues);
       }
     })
   }
@@ -40,7 +43,9 @@ export class TrackertableComponent implements OnInit, OnChanges {
  
   records:{desc:string, amount:number, exAmount:number, date:any, user:any}[] = [];
 
-  ngOnInit(){ }
+  ngOnInit(){ 
+    // console.log(this.dummyArray);
+  }
   ngOnChanges() {
 
     // Checking for the description, income and expense and pushing the values in to the table
@@ -85,7 +90,7 @@ export class TrackertableComponent implements OnInit, OnChanges {
 
     this.totalSaving = this.totalIncome - this.totalExpense;
 
-    if((this.totalIncome - this.totalExpense) < 0){
+    if((this.totalIncome - this.totalExpense) < 0){ 
       this.draft = true;
     }else{
       this.draft = false;
@@ -94,9 +99,9 @@ export class TrackertableComponent implements OnInit, OnChanges {
       this.yippee = true;
     } */
   }
-  sendRecords(){
+  /* sendRecords(){
     this.recordServices.sendRecords(this.records);
-  } 
+  }   */
 
 
 }
