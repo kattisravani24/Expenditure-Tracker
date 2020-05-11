@@ -18,14 +18,14 @@ export class ReceiveComponent implements OnInit {
       if(record){
         this.receivedRecords.push(record);
       }
-      for(var i = 0; i < this.receivedRecords.length; i++){
+      /* for(var i = 0; i < this.receivedRecords.length; i++){
         if(this.receivedRecords[i].exAmount == 0){
           this.expense = true;
         }
         if(this.receivedRecords[i].amount == 0){
           this.income = true;
         } 
-      } 
+      }  */
     });
   }
   ngOnDestroy(){

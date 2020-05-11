@@ -20,9 +20,9 @@ class="table"
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-record  let-i="rowIndex+1">
-    <tr>
+    <tr> 
       <td>{{i}}</td>
-      <td>{{record.user}}</td>
+      <td>{{record.user}}</td> 
       <td>{{record.desc}}</td>
       <td>{{record.amount | currency:'INR'}}</td>
       <td>{{record.exAmount | currency:'INR'}}</td>
@@ -45,3 +45,8 @@ class="table"
    <h6 class="text-success"> Total Savings: {{totalIncome  | currency:'INR'}} - {{totalExpense | currency:'INR'}} = {{ totalIncome - totalExpense | currency:'INR'}}</h6>
    <h6 class="alert alert-danger" *ngIf="draft" >Running out of Balance</h6>
 </div>  
+
+<ul style="color: #fff;">
+  <li>Test</li>
+  <li *ngFor="let value of receivedValues">{{value}}</li>
+</ul>

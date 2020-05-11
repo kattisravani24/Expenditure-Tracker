@@ -1,14 +1,15 @@
 <main><!--Main starts-->
   <div class="row"><!--row starts-->
     <div class="col-sm-12"><!--row ends-->
+      <button class="btn btn-primary">Test</button><br/><br/>
 
       <!--Months filter start here...-->
       <h5>Month</h5>
       <ng-container *ngIf="selectedAllMonths"><!--To select all months-->
-        <small #allMonths (click)="selectAll(allMonths)">Select All</small>
+        <small (click)="selectAllMonths()">Select All</small>
       </ng-container><!--To deselect all months-->
       <ng-container *ngIf="deselectedAllMonths">
-        <small #noMonth (click)="deselecteAll(noMonth)">Clear All</small>
+        <small (click)="deselecteAllMonths()">Clear All</small>
       </ng-container>
       <!--Months list-->
       <div *ngFor="let month of months">
@@ -29,7 +30,7 @@
       <!--Users filter start here...-->
       <h5>User</h5>
       <ng-container *ngIf="selectedAllUsers"><!--To select all users-->
-        <small #allUsers (click)="selectAll(allUsers)">Select All</small> 
+        <small (click)="selectAllUSers()">Select All</small> 
       </ng-container><!--To deselect all users-->
       <ng-container *ngIf="deselectedAllUsers">
         <small (click)="deselecteAllUsers()">Clear All</small>
@@ -51,7 +52,7 @@
       <!--Type filter start here...-->
       <h5>Type</h5>
       <ng-container *ngIf="selectedAllTypes"><!--To select all users-->
-        <small #allTypes (click)="selectAll(allTypes)">Select All</small> 
+        <small (click)="selectAllTypes()">Select All</small> 
       </ng-container><!--To deselect all users-->
       <ng-container *ngIf="deselectedAllTypes">
         <small (click)="deselecteAllTypess()">Clear All</small>

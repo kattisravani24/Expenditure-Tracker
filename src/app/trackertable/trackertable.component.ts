@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { RecordsService } from '../shared/services/records.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'trackertable',
@@ -7,8 +8,15 @@ import { RecordsService } from '../shared/services/records.service';
   styleUrls: ['./trackertable.component.css']
 })
 export class TrackertableComponent implements OnInit, OnChanges {
-
-  constructor(private recordServices: RecordsService) { }
+  subscription: Subscription;
+  receivedValues:any[] = [];
+  constructor(private recordServices: RecordsService) { 
+    this.subscription = this.recordServices.getSelectedValues().subscribe(data => {
+      if(data){
+        this.receivedValues.push(data);
+      }
+    })
+  }
 
   @Input() amount:any 
   @Input() description:any
@@ -89,4 +97,6 @@ export class TrackertableComponent implements OnInit, OnChanges {
   sendRecords(){
     this.recordServices.sendRecords(this.records);
   } 
+
+
 }
