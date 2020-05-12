@@ -1,7 +1,7 @@
 <p-table #et [value]="records" 
 class="table" 
 [responsive]="true" 
-[globalFilterFields]="['desc', 'amount', 'exAmount', 'date']">
+[globalFilterFields]="['user','desc', 'amount', 'exAmount', 'date']">
   <ng-template pTemplate="caption">
     <div style="text-align: left">        
       <input id="filterInput" type="text" pInputText size="50" placeholder="Global Filter" 
@@ -9,7 +9,7 @@ class="table"
       <i class="pi pi-search" style="margin:4px 4px 0 0" ></i>
     </div>
   </ng-template>
-  <ng-template pTemplate="header">
+  <ng-template pTemplate="header"> 
     <tr>
       <th scope="col">S.No</th>
       <th scope="col">User</th>

@@ -14,7 +14,6 @@
       <!--Months list-->
       <div *ngFor="let month of months">
         <ng-container *ngIf="month.shown">
-          
           <input type="checkbox" [(ngModel)]="month.checked" #myMonth (change)="getValue(myMonth)" [value]="month.name"> 
           <span> {{month.name}}</span>
         </ng-container>
@@ -48,7 +47,7 @@
         <small (click)="showLessUsers()">Show Less</small>
       </ng-container>
       <!--Users filter ends here...-->
-
+      
       <!--Type filter start here...-->
       <h5>Type</h5>
       <ng-container *ngIf="selectedAllTypes"><!--To select all users-->
@@ -62,7 +61,6 @@
         <span> {{type.name}}</span>
       </div>
       <!--Type filter ends here...--> 
-
     </div><!--col div-->
   </div><!--row div-->
 </main><!--main ends-->

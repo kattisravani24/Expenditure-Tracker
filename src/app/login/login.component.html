@@ -11,7 +11,7 @@
         formControlName='username' 
         />
         <small *ngIf="username.touched && username.invalid">
-          <small class="errorMsg" *ngIf="username.errors.required">First Name is Required</small>
+          <small class="errorMsg" *ngIf="username.errors.required">Username is required</small>
           <small class="errorMsg" *ngIf="username.errors.minlength">Should be atleast 3 characters</small>
         </small>
     </div>
@@ -26,15 +26,9 @@
         name="password"
         formControlName="password"
         autocomplete="off"
-        />
-      <!-- <input 
-        type="password" 
-        placeholder="Enter Password" 
-        id="password"
-        name="password"
-        formControlName="password"/> --><br/>
+        /><br/>
         <small *ngIf="password.touched && password.invalid">
-          <small class="errorMsg"*ngIf="password.errors.required">Last Name is Required</small>
+          <small class="errorMsg" *ngIf="password.errors.required">Password is required</small>
           <small class="errorMsg" *ngIf="password.errors.minlength">Should be atleast 8 characters</small>
         </small>
     </div>
@@ -43,7 +37,12 @@
       <div class="col-sm-12 col-md-3 col-lg-3"></div>
       <div class="col-sm-12 col-md-3 col-lg-3"></div>
       <div class="col-sm-12 col-md-3 col-lg-3">
-        <button id="loginBtn" type="submit" [disabled]= "myForm.invalid" routerLink='/addincome' (click)="myForm.reset()">Login</button>
+        <button 
+          id="loginBtn" 
+          type="submit" 
+          [disabled]= "myForm.invalid" 
+          routerLink='/addincome' 
+          (click)="myForm.reset()">Login</button>
       </div>
     </div>
   </form>
