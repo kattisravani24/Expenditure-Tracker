@@ -10,13 +10,18 @@ import { Subscription } from 'rxjs';
 export class TrackertableComponent implements OnInit, OnChanges {
   subscription: Subscription;
   receivedValues:any[] = [];
-  // dummyArray: string[] = ['aa','bb'];
+  uniqueReceivedValues:any[] = [];
   
   constructor(private recordServices: RecordsService) { 
     this.subscription = this.recordServices.getSelectedValues().subscribe(data => {
       if(data){
-        this.receivedValues.push(data);
-        console.log(this.receivedValues);
+        for (var k = 0; k < this.receivedValues.length; k++) {
+          if (this.uniqueReceivedValues.indexOf(this.receivedValues[k]) == -1) {
+            this.uniqueReceivedValues.push(this.receivedValues[k]);
+          } 
+        }
+        this.uniqueReceivedValues.push(data);
+        //console.log(this.receivedValues);
       }
     })
   }

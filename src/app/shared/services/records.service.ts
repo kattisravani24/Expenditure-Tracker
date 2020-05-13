@@ -21,6 +21,6 @@ export class RecordsService {
   }
 
   getSelectedValues(): Observable<any>{
-    return this.subject.asObservable();
+    return this.subject.asObservable();  
   }
 } 

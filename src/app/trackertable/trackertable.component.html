@@ -28,7 +28,7 @@ class="table"
       <td>{{record.exAmount | currency:'INR'}}</td>
       <td>{{record.date | date }}</td>
     </tr> 
-  </ng-template>
+  </ng-template>  
 </p-table>
 
 <hr>
@@ -47,10 +47,6 @@ class="table"
    <h6 class="alert alert-danger" *ngIf="draft" >Running out of Balance</h6>
 </div>  
 
-<ul style="color: #fff;" *ngFor="let value of receivedValues">
+<ul style="color: #fff;" *ngFor="let value of uniqueReceivedValues">
   <li>{{value}}</li>
 </ul>
-<!-- 
-<ul style="color: #fff;" *ngFor="let arr of dummyArray">
-  <li>{{arr}}</li>
-</ul> -->

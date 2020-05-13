@@ -1,20 +1,20 @@
 <main><!--Main starts-->
   <div class="row"><!--row starts-->
     <div class="col-sm-12"><!--row ends-->
-      <button class="btn btn-primary" (click)="sendSelectedValues()">Send Values</button><br/><br/>
+      <!-- <button class="btn btn-primary" (click)="sendSelectedValues()">Send Values</button><br/><br/> -->
 
       <!--Months filter start here...-->
       <h5>Month</h5>
       <ng-container *ngIf="selectedAllMonths"><!--To select all months-->
         <small (click)="selectAllMonths()">Select All</small>
       </ng-container><!--To deselect all months-->
-      <ng-container *ngIf="deselectedAllMonths">
+      <ng-container *ngIf="deselectedAllMonths"> 
         <small (click)="deselecteAllMonths()">Clear All</small>
       </ng-container>
       <!--Months list-->
       <div *ngFor="let month of months">
         <ng-container *ngIf="month.shown">
-          <input type="checkbox" [(ngModel)]="month.checked" #myMonth (change)="getValue(myMonth)" [value]="month.name"> 
+          <input type="checkbox" [(ngModel)]="month.checked" #myMonth (change)="getValue(myMonth);" [value]="month.name"> 
           <span> {{month.name}}</span>
         </ng-container>
       </div>

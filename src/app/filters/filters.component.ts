@@ -1,4 +1,5 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 import { RecordsService } from '../shared/services/records.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { RecordsService } from '../shared/services/records.service';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.css']
 })
-export class FiltersComponent implements OnInit, OnChanges{
+export class FiltersComponent implements OnInit {
   months: {name:string, checked:boolean, shown:boolean}[];
   users: {name:string, checked:boolean, shown:boolean}[];
   types: {name:string, checked:boolean}[];
@@ -28,9 +29,10 @@ export class FiltersComponent implements OnInit, OnChanges{
   selectedMonths:string[] = [];
   selectedUsers:string[] = [];
   selectedTypes:string[] =[];
-  uniqueValues:string[] = [];
 
-  constructor(private filterService: RecordsService) { }
+  constructor(private filterService: RecordsService) { 
+    console.log(this.selectedValues);
+  }
 
   ngOnInit(): void {
     this.months = [
@@ -46,6 +48,7 @@ export class FiltersComponent implements OnInit, OnChanges{
       { name:'October', checked:true, shown: false  },
       { name:'November', checked:true , shown: false },
       { name:'December', checked:true , shown: false }
+
     ];
     this.users = [
       { name:'Ahemmed', checked: true, shown: true }, 
@@ -58,43 +61,38 @@ export class FiltersComponent implements OnInit, OnChanges{
       {name:'Expenditure', checked:true}
     ];
 
-    this.months.forEach(val => {
-      if(val.checked == true){
-        this.selectedMonths.push(val.name);
+    /* for(var i=0; i<this.months.length; i++){
+      if(this.months[i].checked == true){
+        this.selectedMonths.push(this.months[i].name);
       }
-    })
+    }
     console.log(this.selectedMonths);
-
-    this.users.forEach(val => {
-      if(val.checked == true){
-        this.selectedUsers.push(val.name);
+    for(var i=0; i<this.users.length; i++){
+      if(this.users[i].checked == true){
+        this.selectedUsers.push(this.users[i].name);
       }
-    })
+    }
     console.log(this.selectedUsers);
-
-    this.types.forEach(val => {
-      if(val.checked == true){
-        this.selectedTypes.push(val.name);
+    for(var i=0; i<this.types.length; i++){
+      if(this.types[i].checked == true){
+        this.selectedTypes.push(this.types[i].name);
       }
-    })
+    } 
     console.log(this.selectedTypes);
-
     this.selectedValues = this.selectedMonths.concat(this.selectedUsers, this.selectedTypes);
-    console.log(this.selectedValues);
-  }
-
-  ngOnChanges(){
-    
+    console.log(this.selectedValues); */
   }
 
   getValue(data){
     if(data.checked === true){
       this.selectedValues.push(data.value);
       console.log(this.selectedValues);
+      this.sendSelectedValues();
     }
     if(data.checked == false){
       this.selectedValues.splice(this.selectedValues.indexOf(data.value), 1);
       console.log(this.selectedValues);
+      this.sendSelectedValues();
     }
     this.users.forEach(val => {
       if(val.checked == false){
@@ -105,24 +103,24 @@ export class FiltersComponent implements OnInit, OnChanges{
         this.selectedAllUsers = false;
       }
     })  
-    this.months.forEach(val => {
-      if(val.checked == false){
-        this.selectedAllMonths = true;
-        this.deselectedAllMonths = false;
-      }else if(val.checked == true){
-        this.deselectedAllMonths = true;
-        this.selectedAllMonths = false;
-      }
-    })
-    this.types.forEach(val => {
-      if(val.checked == false){
-        this.selectedAllTypes = true;
-        this.deselectedAllTypes = false;
-      }else if(val.checked == true){
-        this.deselectedAllTypes = true;
-        this.selectedAllTypes = false;
-      }
-    })  
+  this.months.forEach(val => {
+    if(val.checked == false){
+      this.selectedAllMonths = true;
+      this.deselectedAllMonths = false;
+    }else if(val.checked == true){
+      this.deselectedAllMonths = true;
+      this.selectedAllMonths = false;
+    }
+  })
+  this.types.forEach(val => {
+    if(val.checked == false){
+      this.selectedAllTypes = true;
+      this.deselectedAllTypes = false;
+    }else if(val.checked == true){
+      this.deselectedAllTypes = true;
+      this.selectedAllTypes = false;
+    }
+  })  
   }
   /**
    * To select all months
@@ -142,10 +140,8 @@ export class FiltersComponent implements OnInit, OnChanges{
     console.log(this.selectedMonths);
     this.selectedValues = this.selectedValues.concat(this.selectedMonths);
     console.log(this.selectedValues);
+    this.sendSelectedValues();
   }
-  /**
-   * Select all users
-   */
   selectAllUSers(){
     this.users.forEach(user=>{
       user.checked = true;
@@ -160,10 +156,8 @@ export class FiltersComponent implements OnInit, OnChanges{
     console.log(this.selectedUsers);
     this.selectedValues = this.selectedValues.concat(this.selectedUsers);
     console.log(this.selectedValues);
+    this.sendSelectedValues();
   }
-  /**
-   * Select all types
-   */
   selectAllTypes(){
     this.types.forEach(type=>{
       type.checked = true;
@@ -178,6 +172,7 @@ export class FiltersComponent implements OnInit, OnChanges{
     console.log(this.selectedTypes);
     this.selectedValues = this.selectedValues.concat(this.selectedTypes);
     console.log(this.selectedValues);
+    this.sendSelectedValues();
   }
   /**
    * To deselect all months
@@ -193,6 +188,7 @@ export class FiltersComponent implements OnInit, OnChanges{
     })
     console.log(this.selectedMonths);
     this.selectedValues.concat(this.selectedMonths);
+    this.sendSelectedValues();
   }
   /**
    * To deselect all users
@@ -207,10 +203,8 @@ export class FiltersComponent implements OnInit, OnChanges{
       }
     })  
     console.log(this.selectedUsers);
+    this.sendSelectedValues();
   }
-  /**
-   * To deselect all types
-   */
   deselecteAllTypess(){
     this.types.forEach(type => {
       type.checked = false;
@@ -221,6 +215,7 @@ export class FiltersComponent implements OnInit, OnChanges{
       }
     })
     console.log(this.selectedTypes);
+    this.sendSelectedValues();
   }
   /**
    * To show all months
@@ -266,9 +261,7 @@ export class FiltersComponent implements OnInit, OnChanges{
       }
     })
   }
-  /**
-   * To send selected values to other component 
-   */
+  
   sendSelectedValues(){
     this.filterService.sendSelectedValues(this.selectedValues);
     console.log(this.selectedValues);
