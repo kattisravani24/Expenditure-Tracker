@@ -24,8 +24,8 @@ class="table"
       <td>{{i}}</td>
       <td>{{record.user}}</td> 
       <td>{{record.desc}}</td>
-      <td>{{record.amount | currency:'INR'}}</td>
-      <td>{{record.exAmount | currency:'INR'}}</td>
+      <td>{{record.income | currency:'INR'}}</td>
+      <td>{{record.expense | currency:'INR'}}</td>
       <td>{{record.date | date }}</td>
     </tr> 
   </ng-template>  
@@ -37,16 +37,16 @@ class="table"
   <h6>Total Income  - {{totalIncome  | currency:'INR'}}</h6>
   <h6>Total Expense - {{totalExpense  | currency:'INR'}}</h6>
 </div>
+<!-- 
+<button class="btn btn-success" (click)="sendRecords()"> Print Records</button> 
 
-<!-- <button class="btn btn-success" (click)="sendRecords()"> Print Records</button> -->
-
-<!-- <receive></receive>  -->
+<receive></receive>   -->
 
 <div class="alert alert-primary container">
-   <h6 class="text-success"> Total Savings: {{totalIncome  | currency:'INR'}} - {{totalExpense | currency:'INR'}} = {{ totalIncome - totalExpense | currency:'INR'}}</h6>
+   <h6 class="text-success"> Total Savings: {{savings  | currency:'INR'}}</h6>
    <h6 class="alert alert-danger" *ngIf="draft" >Running out of Balance</h6>
 </div>  
 
-<ul style="color: #fff;" *ngFor="let value of uniqueReceivedValues">
+<!-- <ul style="color: #fff;" *ngFor="let value of uniqueReceivedValues">
   <li>{{value}}</li>
-</ul>
+</ul>  -->

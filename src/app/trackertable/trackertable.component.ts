@@ -1,112 +1,52 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RecordsService } from '../shared/services/records.service';
 import { Subscription } from 'rxjs';
+import { SendRecordsService } from '../shared/services/send-records.service';
 
 @Component({
   selector: 'trackertable',
   templateUrl: './trackertable.component.html',
   styleUrls: ['./trackertable.component.css']
 })
-export class TrackertableComponent implements OnInit, OnChanges {
+export class TrackertableComponent implements OnInit {
   subscription: Subscription;
-  receivedValues:any[] = [];
-  uniqueReceivedValues:any[] = [];
-  
-  constructor(private recordServices: RecordsService) { 
-    this.subscription = this.recordServices.getSelectedValues().subscribe(data => {
-      if(data){
-        for (var k = 0; k < this.receivedValues.length; k++) {
-          if (this.uniqueReceivedValues.indexOf(this.receivedValues[k]) == -1) {
-            this.uniqueReceivedValues.push(this.receivedValues[k]);
-          } 
-        }
-        this.uniqueReceivedValues.push(data);
-        //console.log(this.receivedValues);
+
+  constructor(private recordServices: RecordsService, public receiveRecord: SendRecordsService) { }
+
+  records:{ user:string, desc:string, income:number, expense:number, date:any}[] = [];
+  incomes: number[] = [];
+  expenses: number[] = [];
+  totalIncome: number = 0.0;
+  totalExpense:number = 0.0;
+  savings: number = 0.0;
+  draft:boolean = false;
+
+  ngOnInit(){ 
+    /**
+     * Subscribing to recieve record service and getting the transaction values
+     */
+    this.subscription = this.receiveRecord.getTransaction().subscribe(val => {
+      if(val){
+        this.records.push(val);
+        this.incomes.push(val.income);
+        this.expenses.push(val.expense);
+      }else{
+        this.records = [];
+      } 
+      //Calculating total income 
+      this.totalIncome = this.incomes.reduce(function(a, b){
+        return Number(a) + Number(b);
+        }, 0);
+      //Calculating total expenses 
+      this.totalExpense = this.expenses.reduce(function(a, b){
+        return Number(a) + Number(b);
+        }, 0);
+      // Calculating total saving
+      this.savings = this.totalIncome - this.totalExpense;
+      // If saving is less than 0 showing warning message to the user
+      if(this.savings < 0){
+        this.draft = true;
       }
     })
   }
-
-  @Input() amount:any 
-  @Input() description:any
-  @Input() expenseAmount:any 
-  @Input() description2:any
-  @Input() incomeDate:any 
-  @Input() expenseDate:any
-  @Input() inUser:any;
-  @Input() exUser:any;
-
-  draft:boolean = false;
-  yippee:boolean;
-  incomeArr:any[] = [];
-  uniqueIncomeArr:any[] =[];
-  expenseArr:any[] = [];
-  uniqueExpenseArr:any[] =[];
-  totalIncome:any;
-  totalExpense:any;
-  totalSaving:any;
-  temp = 0.00;
- 
-  records:{desc:string, amount:number, exAmount:number, date:any, user:any}[] = [];
-
-  ngOnInit(){ 
-    // console.log(this.dummyArray);
-  }
-  ngOnChanges() {
-
-    // Checking for the description, income and expense and pushing the values in to the table
-    if(this.amount && this.description && this.incomeDate){
-      this.records.push({desc:this.description, amount:this.amount, exAmount:this.temp, date:this.incomeDate, 
-        user:this.inUser});
-      this.amount='';
-      this.description=''; 
-    }
-    else if(this.expenseAmount && this.description2 && this.expenseDate){
-      this.records.push({desc:this.description2, amount:this.temp, exAmount:this.expenseAmount, date:this.expenseDate, user:this.exUser});
-    }
-    
-    //Pushing income values to income array
-    for(var i = 0; i < this.records.length; i++){
-      this.incomeArr.push(this.records[i].amount);
-    } 
-    // Removing Dulpicate Incomes 
-    for (var j = 0; j < this.incomeArr.length; j++) {
-      if (this.uniqueIncomeArr.indexOf(this.incomeArr[j]) == -1) {
-        this.uniqueIncomeArr.push(this.incomeArr[j]);
-      } 
-    }
-    //Adding Unique Incomes
-    this.totalIncome = this.uniqueIncomeArr.reduce(function(a, b){
-      return Number(a) + Number(b);
-      }, 0);
-    //Pushing expense values to expense array
-    for(var e = 0; e < this.records.length; e++){
-      this.expenseArr.push(this.records[e].exAmount);
-    } 
-    // Removing Dulpicate Expenses 
-    for (var k = 0; k < this.expenseArr.length; k++) {
-      if (this.uniqueExpenseArr.indexOf(this.expenseArr[k]) == -1) {
-        this.uniqueExpenseArr.push(this.expenseArr[k]);
-      } 
-    }
-    //Adding Unique Expenses
-    this.totalExpense = this.uniqueExpenseArr.reduce(function(c, d){
-      return Number(c) + Number(d);
-      }, 0); 
-
-    this.totalSaving = this.totalIncome - this.totalExpense;
-
-    if((this.totalIncome - this.totalExpense) < 0){ 
-      this.draft = true;
-    }else{
-      this.draft = false;
-    }
-    /* else if((this.totalIncome - this.totalExpense) > 0 && (this.totalIncome - this.totalExpense) != 0){
-      this.yippee = true;
-    } */
-  }
-  /* sendRecords(){
-    this.recordServices.sendRecords(this.records);
-  }   */
-
-
 }

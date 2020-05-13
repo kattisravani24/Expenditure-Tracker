@@ -1,29 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SelectItem} from 'primeng/api';
+import { SendRecordsService } from '../shared/services/send-records.service';
 @Component({
   selector: 'addincome',
   templateUrl: './addincome.component.html',
   styleUrls: ['./addincome.component.css']
 })
 export class AddincomeComponent implements OnInit {
- amnt:any;
- desp:any;
- desp2:any;     
- exAmnt:any; 
- myIncomeDate:any; 
- myExpenseDate:any;
- myIncomeUser:any;
- myExpenseUser:any;
-
-//  value: Date;
 
 users: SelectItem[];
 selectedUser: SelectItem;
 incomeForm:FormGroup;
 expenseForm:FormGroup;
 
- constructor() {
+ constructor(private transaction: SendRecordsService) { }
+
+  ngOnInit(): void { 
     this.users = 
     [
       {label: "(Select User)", value: "Select User"},
@@ -32,9 +25,6 @@ expenseForm:FormGroup;
       {label: 'Suman', value: 'Suman'},
       {label: 'Malathi', value: 'Malathi'}
     ];
-  }
-
-  ngOnInit(): void { 
 
     this.incomeForm = new FormGroup({
       incomeDescription: new FormControl('',Validators.required),
@@ -48,6 +38,12 @@ expenseForm:FormGroup;
       validateExpenseDate: new FormControl('', Validators.required)
     })
   }
+  sendIncome(desc, amount, incomeDate, incomeUser){
+    this.transaction.sendTransaction({user: incomeUser.value, desc: desc.value, income: amount.value, expense: 0.0, date: incomeDate.value});
+  }
+  sendExpense(desc2, expense, expenseDate, expenseUser){ 
+    this.transaction.sendTransaction({user: expenseUser.value, desc: desc2.value, expense: expense.value, income: 0.0, date: expenseDate.value});
+  } 
   get incomeDescription(){
     return this.incomeForm.get('incomeDescription');
   }
@@ -63,7 +59,6 @@ expenseForm:FormGroup;
   get expenseDescription(){
     return this.expenseForm.get('expenseDescription');
   }
-  
   get expenseAmount(){
     return this.expenseForm.get('expenseAmount');
   }
@@ -71,16 +66,5 @@ expenseForm:FormGroup;
     return this.expenseForm.get('validateExpenseDate');
   }
 
-  sendIncome(desc, amount, incomeDate, incomeUser){
-    this.desp= desc.value;
-    this.amnt = amount.value;  
-    this.myIncomeDate = incomeDate.value;
-    this.myIncomeUser = incomeUser.value;
-  }
-   sendExpense(desc2, expense, expenseDate, expenseUser){ 
-    this.desp2= desc2.value;
-    this.exAmnt=expense.value;
-    this.myExpenseDate = expenseDate.value;
-    this.myExpenseUser = expenseUser.value;
-  } 
+  
 } 
