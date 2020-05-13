@@ -10,7 +10,7 @@
       </ng-container><!--To deselect all months-->
       <ng-container *ngIf="deselectedAllMonths"> 
         <small (click)="deselecteAllMonths()">Clear All</small>
-      </ng-container>
+      </ng-container> 
       <!--Months list-->
       <div *ngFor="let month of months">
         <ng-container *ngIf="month.shown">

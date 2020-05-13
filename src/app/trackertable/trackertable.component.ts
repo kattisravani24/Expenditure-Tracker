@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecordsService } from '../shared/services/records.service';
 import { Subscription } from 'rxjs';
 import { SendRecordsService } from '../shared/services/send-records.service';
+import { FilterService } from '../shared/services/filter.service';
 
 @Component({
   selector: 'trackertable',
@@ -10,9 +10,9 @@ import { SendRecordsService } from '../shared/services/send-records.service';
 })
 export class TrackertableComponent implements OnInit {
   subscription: Subscription;
+  constructor(private filters: FilterService, public receiveRecord: SendRecordsService) { }
 
-  constructor(private recordServices: RecordsService, public receiveRecord: SendRecordsService) { }
-
+  // variables for processing a transaction
   records:{ user:string, desc:string, income:number, expense:number, date:any}[] = [];
   incomes: number[] = [];
   expenses: number[] = [];
@@ -20,6 +20,11 @@ export class TrackertableComponent implements OnInit {
   totalExpense:number = 0.0;
   savings: number = 0.0;
   draft:boolean = false;
+
+  // variables for filtering
+  filtered: any[] = [];
+  test;
+  users: string[] = [];
 
   ngOnInit(){ 
     /**
@@ -30,6 +35,7 @@ export class TrackertableComponent implements OnInit {
         this.records.push(val);
         this.incomes.push(val.income);
         this.expenses.push(val.expense);
+        this.users.push(val.user);
       }else{
         this.records = [];
       } 
@@ -49,6 +55,27 @@ export class TrackertableComponent implements OnInit {
       }else if(this.savings > 0){
         this.draft = false;
       }
+      console.log(this.users);
+      console.log(this.filtered);
     })
+
+    this.subscription = this.filters.getFilteredValues().subscribe(val => {
+      if(val){
+        this.filtered.push(val);
+        console.log(val); 
+      }
+    })
+    for(var i=0; i<this.users.length; i++){
+      for(var j=0; j<this.filtered.length; j++){
+        this.test = this.users[i].includes(this.filtered[j]);
+        if(this.test == true){
+          console.log('Matching Users' + this.filtered[j]);
+        }
+      }
+    }    
+  }
+
+  filterTable(){    
+     //console.log(this.filtered);
   }
 }

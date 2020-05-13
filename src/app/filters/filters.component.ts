@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { RecordsService } from '../shared/services/records.service';
+import { FilterService } from '../shared/services/filter.service';
 
 @Component({
   selector: 'filters',
@@ -30,9 +30,7 @@ export class FiltersComponent implements OnInit {
   selectedUsers:string[] = [];
   selectedTypes:string[] =[];
 
-  constructor(private filterService: RecordsService) { 
-    console.log(this.selectedValues);
-  }
+  constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
     this.months = [
@@ -86,12 +84,12 @@ export class FiltersComponent implements OnInit {
   getValue(data){
     if(data.checked === true){
       this.selectedValues.push(data.value);
-      console.log(this.selectedValues);
+      //console.log(this.selectedValues);
       this.sendSelectedValues();
     }
     if(data.checked == false){
       this.selectedValues.splice(this.selectedValues.indexOf(data.value), 1);
-      console.log(this.selectedValues);
+      //console.log(this.selectedValues);
       this.sendSelectedValues();
     }
     this.users.forEach(val => {
@@ -137,9 +135,9 @@ export class FiltersComponent implements OnInit {
         this.selectedMonths.length = 0;
       }
     })
-    console.log(this.selectedMonths);
+    //console.log(this.selectedMonths);
     this.selectedValues = this.selectedValues.concat(this.selectedMonths);
-    console.log(this.selectedValues);
+    //console.log(this.selectedValues);
     this.sendSelectedValues();
   }
   selectAllUSers(){
@@ -153,9 +151,9 @@ export class FiltersComponent implements OnInit {
         this.selectedUsers.length = 0;
       }
     })
-    console.log(this.selectedUsers);
+    //console.log(this.selectedUsers);
     this.selectedValues = this.selectedValues.concat(this.selectedUsers);
-    console.log(this.selectedValues);
+    //console.log(this.selectedValues);
     this.sendSelectedValues();
   }
   selectAllTypes(){
@@ -169,9 +167,9 @@ export class FiltersComponent implements OnInit {
         this.selectedTypes.length = 0;
       }
     })
-    console.log(this.selectedTypes);
+    //console.log(this.selectedTypes);
     this.selectedValues = this.selectedValues.concat(this.selectedTypes);
-    console.log(this.selectedValues);
+    //console.log(this.selectedValues);
     this.sendSelectedValues();
   }
   /**
@@ -186,7 +184,7 @@ export class FiltersComponent implements OnInit {
         this.selectedMonths.length = 0;
       }
     })
-    console.log(this.selectedMonths);
+    //console.log(this.selectedMonths);
     this.selectedValues.concat(this.selectedMonths);
     this.sendSelectedValues();
   }
@@ -202,7 +200,7 @@ export class FiltersComponent implements OnInit {
         this.selectedUsers.length = 0;
       }
     })  
-    console.log(this.selectedUsers);
+    //console.log(this.selectedUsers);
     this.sendSelectedValues();
   }
   deselecteAllTypess(){
@@ -214,7 +212,7 @@ export class FiltersComponent implements OnInit {
         this.selectedTypes.length = 0;
       }
     })
-    console.log(this.selectedTypes);
+    //console.log(this.selectedTypes);
     this.sendSelectedValues();
   }
   /**
@@ -253,7 +251,7 @@ export class FiltersComponent implements OnInit {
    * To show only 3 users
    */
   showLessUsers(){
-    this.users.forEach((user, index) =>{
+    this.users.forEach((user, index) =>{ 
       if(index > 2){
         user.shown = false;
         this.hiddenFewUsers = false;
@@ -263,7 +261,7 @@ export class FiltersComponent implements OnInit {
   }
   
   sendSelectedValues(){
-    this.filterService.sendSelectedValues(this.selectedValues);
-    console.log(this.selectedValues);
+    this.filterService.sendFilteredValues(this.selectedValues);
+    //console.log(this.selectedValues);
   }
 }

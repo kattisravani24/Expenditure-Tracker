@@ -7,6 +7,8 @@ class="table"
       <input id="filterInput" type="text" pInputText size="50" placeholder="Global Filter" 
       (input)="et.filterGlobal($event.target.value, 'contains')" style="width:auto">
       <i class="pi pi-search" style="margin:4px 4px 0 0" ></i>
+
+      <button class="btn btn-primary" (click)="filterTable()">Filter</button>
     </div>
   </ng-template>
   <ng-template pTemplate="header"> 

@@ -11,16 +11,10 @@ export class RecordsService {
   sendRecords(record:{desc:string, amount:number, exAmount:number, date:any, user:any}[]){
     this.subject.next(record);
   } 
-
+ 
   getRecord(): Observable<any>{
     return this.subject.asObservable();
-  }
+  } 
 
-  sendSelectedValues(values: string[]){
-    this.subject.next(values);
-  }
-
-  getSelectedValues(): Observable<any>{
-    return this.subject.asObservable();  
-  }
+  
 } 

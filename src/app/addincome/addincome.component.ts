@@ -8,14 +8,11 @@ import { SendRecordsService } from '../shared/services/send-records.service';
   styleUrls: ['./addincome.component.css']
 })
 export class AddincomeComponent implements OnInit {
-
 users: SelectItem[];
 selectedUser: SelectItem;
 incomeForm:FormGroup;
 expenseForm:FormGroup;
-
  constructor(private transaction: SendRecordsService) { }
-
   ngOnInit(): void { 
     this.users = 
     [
@@ -25,7 +22,6 @@ expenseForm:FormGroup;
       {label: 'Suman', value: 'Suman'},
       {label: 'Malathi', value: 'Malathi'}
     ];
-
     this.incomeForm = new FormGroup({
       incomeDescription: new FormControl('',Validators.required),
       incomeAmount: new FormControl('', Validators.required),
@@ -57,7 +53,7 @@ expenseForm:FormGroup;
     return this.expenseForm.get('validateIncomeUser');
   } 
   get expenseDescription(){
-    return this.expenseForm.get('expenseDescription');
+    return this.expenseForm.get('expenseDescription'); 
   }
   get expenseAmount(){
     return this.expenseForm.get('expenseAmount');
@@ -65,6 +61,4 @@ expenseForm:FormGroup;
   get validateExpenseDate(){
     return this.expenseForm.get('validateExpenseDate');
   }
-
-  
 } 
