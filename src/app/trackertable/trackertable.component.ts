@@ -46,6 +46,8 @@ export class TrackertableComponent implements OnInit {
       // If saving is less than 0 showing warning message to the user
       if(this.savings < 0){
         this.draft = true;
+      }else if(this.savings > 0){
+        this.draft = false;
       }
     })
   }
