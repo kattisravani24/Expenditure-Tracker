@@ -55,27 +55,26 @@ export class TrackertableComponent implements OnInit {
       }else if(this.savings > 0){
         this.draft = false;
       }
-      console.log(this.users);
-      console.log(this.filtered);
     })
 
     this.subscription = this.filters.getFilteredValues().subscribe(val => {
       if(val){
         this.filtered.push(val);
-        console.log(val); 
+        console.log(this.filtered); 
       }
-    })
-    for(var i=0; i<this.users.length; i++){
-      for(var j=0; j<this.filtered.length; j++){
-        this.test = this.users[i].includes(this.filtered[j]);
-        if(this.test == true){
-          console.log('Matching Users' + this.filtered[j]);
-        }
-      }
-    }    
+    })   
   }
 
-  filterTable(){    
-     //console.log(this.filtered);
+  filterTable(){  
+    let temp = [];
+    console.log(this.users);
+    console.log(this.filtered[0].users);
+    for(var i=0; i<this.users.length; i++){
+      for(var j=0; j<this.filtered.length; j++){
+        if(this.users[i].includes(this.filtered[j].users)){
+          temp.push(this.filtered[j].users);
+        }
+      }
+    }   
   }
 }

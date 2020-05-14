@@ -14,7 +14,7 @@
       <!--Months list-->
       <div *ngFor="let month of months">
         <ng-container *ngIf="month.shown">
-          <input type="checkbox" [(ngModel)]="month.checked" #myMonth (change)="getValue(myMonth);" [value]="month.name"> 
+          <input type="checkbox" [(ngModel)]="month.checked" #myMonth (change)="getMonth(myMonth);" [value]="month.name"> 
           <span> {{month.name}}</span>
         </ng-container>
       </div>
@@ -36,7 +36,7 @@
       </ng-container>
       <div *ngFor="let user of users">
         <ng-container *ngIf="user.shown">
-          <input type="checkbox" [(ngModel)]="user.checked" #myUser (change)="getValue(myUser)" [value]="user.name"> 
+          <input type="checkbox" [(ngModel)]="user.checked" #myUser (change)="getUser(myUser)" [value]="user.name"> 
           <span> {{user.name}}</span>
         </ng-container>
       </div>
@@ -57,7 +57,7 @@
         <small (click)="deselecteAllTypess()">Clear All</small>
       </ng-container>
       <div *ngFor="let type of types">
-        <input type="checkbox" [(ngModel)]="type.checked" #myType (change)="getValue(myType)" [value]="type.name"> 
+        <input type="checkbox" [(ngModel)]="type.checked" #myType (change)="getType(myType)" [value]="type.name"> 
         <span> {{type.name}}</span>
       </div>
       <!--Type filter ends here...--> 

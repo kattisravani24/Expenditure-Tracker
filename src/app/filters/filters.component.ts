@@ -29,7 +29,7 @@ export class FiltersComponent implements OnInit {
   selectedMonths:string[] = [];
   selectedUsers:string[] = [];
   selectedTypes:string[] =[];
-
+  
   constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
@@ -81,17 +81,17 @@ export class FiltersComponent implements OnInit {
     console.log(this.selectedValues); */
   }
 
-  getValue(data){
-    if(data.checked === true){
-      this.selectedValues.push(data.value);
-      //console.log(this.selectedValues);
+  getUser(myUser){
+    if(myUser.checked === true){
+      this.selectedUsers.push(myUser.value);
+      console.log(this.selectedUsers);
       this.sendSelectedValues();
     }
-    if(data.checked == false){
-      this.selectedValues.splice(this.selectedValues.indexOf(data.value), 1);
-      //console.log(this.selectedValues);
+    if(myUser.checked == false){
+      this.selectedUsers.splice(this.selectedUsers.indexOf(myUser.value), 1);
+      console.log(this.selectedUsers);
       this.sendSelectedValues();
-    }
+    } 
     this.users.forEach(val => {
       if(val.checked == false){
         this.selectedAllUsers = true;
@@ -101,6 +101,18 @@ export class FiltersComponent implements OnInit {
         this.selectedAllUsers = false;
       }
     })  
+  }
+  getMonth(myMonth){
+    if(myMonth.checked === true){
+      this.selectedUsers.push(myMonth.value);
+      console.log(this.selectedUsers);
+      this.sendSelectedValues();
+    }
+    if(myMonth.checked == false){
+      this.selectedMonths.splice(this.selectedMonths.indexOf(myMonth.value), 1);
+      console.log(this.selectedMonths);
+      this.sendSelectedValues();
+    } 
   this.months.forEach(val => {
     if(val.checked == false){
       this.selectedAllMonths = true;
@@ -110,6 +122,18 @@ export class FiltersComponent implements OnInit {
       this.selectedAllMonths = false;
     }
   })
+}
+getType(myType){
+  if(myType.checked === true){
+    this.selectedTypes.push(myType.value);
+    console.log(this.selectedTypes);
+    this.sendSelectedValues();
+  }
+  if(myType.checked == false){
+    this.selectedTypes.splice(this.selectedTypes.indexOf(myType.value), 1);
+    console.log(this.selectedTypes);
+    this.sendSelectedValues();
+  } 
   this.types.forEach(val => {
     if(val.checked == false){
       this.selectedAllTypes = true;
@@ -135,9 +159,7 @@ export class FiltersComponent implements OnInit {
         this.selectedMonths.length = 0;
       }
     })
-    //console.log(this.selectedMonths);
-    this.selectedValues = this.selectedValues.concat(this.selectedMonths);
-    //console.log(this.selectedValues);
+    console.log(this.selectedMonths);
     this.sendSelectedValues();
   }
   selectAllUSers(){
@@ -151,9 +173,8 @@ export class FiltersComponent implements OnInit {
         this.selectedUsers.length = 0;
       }
     })
-    //console.log(this.selectedUsers);
+    console.log(this.selectedUsers);
     this.selectedValues = this.selectedValues.concat(this.selectedUsers);
-    //console.log(this.selectedValues);
     this.sendSelectedValues();
   }
   selectAllTypes(){
@@ -167,9 +188,7 @@ export class FiltersComponent implements OnInit {
         this.selectedTypes.length = 0;
       }
     })
-    //console.log(this.selectedTypes);
-    this.selectedValues = this.selectedValues.concat(this.selectedTypes);
-    //console.log(this.selectedValues);
+    console.log(this.selectedTypes);
     this.sendSelectedValues();
   }
   /**
@@ -184,8 +203,7 @@ export class FiltersComponent implements OnInit {
         this.selectedMonths.length = 0;
       }
     })
-    //console.log(this.selectedMonths);
-    this.selectedValues.concat(this.selectedMonths);
+    console.log(this.selectedMonths);
     this.sendSelectedValues();
   }
   /**
@@ -200,7 +218,7 @@ export class FiltersComponent implements OnInit {
         this.selectedUsers.length = 0;
       }
     })  
-    //console.log(this.selectedUsers);
+    console.log(this.selectedUsers);
     this.sendSelectedValues();
   }
   deselecteAllTypess(){
@@ -212,7 +230,7 @@ export class FiltersComponent implements OnInit {
         this.selectedTypes.length = 0;
       }
     })
-    //console.log(this.selectedTypes);
+    console.log(this.selectedTypes);
     this.sendSelectedValues();
   }
   /**
@@ -261,7 +279,6 @@ export class FiltersComponent implements OnInit {
   }
   
   sendSelectedValues(){
-    this.filterService.sendFilteredValues(this.selectedValues);
-    //console.log(this.selectedValues);
+    this.filterService.sendFilteredValues({users: this.selectedUsers, months: this.selectedMonths, types: this.selectedTypes});
   }
 }

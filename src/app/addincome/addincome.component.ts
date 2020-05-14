@@ -50,7 +50,7 @@ expenseForm:FormGroup;
     return this.incomeForm.get('validateIncomeDate');
   }
   get validateIncomeUser(){
-    return this.expenseForm.get('validateIncomeUser');
+    return this.expenseForm.get('validateIncomeUser'); 
   } 
   get expenseDescription(){
     return this.expenseForm.get('expenseDescription'); 

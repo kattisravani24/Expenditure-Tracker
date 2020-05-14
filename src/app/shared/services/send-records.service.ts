@@ -12,7 +12,7 @@ export class SendRecordsService {
    * @param record - to store one transaction
    */
   sendTransaction(record: {user:string, desc:string, income:number, expense:number, date:any}){
-    this.sub.next(record);
+    this.sub.next(record); 
   }
 
   /**
