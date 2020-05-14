@@ -72,7 +72,10 @@ export class TrackertableComponent implements OnInit {
   }
   
   deleteitem(record): void{ 
-   this.records =this.records.filter( t => t.income!==record.income);
+   const i =this.records.findIndex( t => t.user===record);
+   if(i !== -1){
+    this.records.splice(i,1);
+  }
    this.message = 'Confirmed!';
    this.modalRef.hide();
    /* this.totalExpense = this.expenses.reduce(function(a, b){
