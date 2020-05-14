@@ -79,9 +79,7 @@ export class TrackertableComponent implements OnInit {
   }
    this.message = 'Confirmed!';
    this.modalRef.hide();
-   /* this.totalExpense = this.expenses.reduce(function(a, b){
-    return Number(a) + Number(b);
-    }, 0); */ 
+
     console.log(record);
  }
  
