@@ -31,14 +31,14 @@ class="table"
       <td>{{record.expense | currency:'INR'}}</td>
       <td>{{record.date | date }}</td>
       <td>
-        <i class="pi pi-pencil"></i>
+        <i class="pi pi-pencil"></i> 
         <i class="pi pi-trash" (click)="openModal(template)"></i>
         <ng-template
          #template>
             <div class="modal-body text-center" style="widows: 100%;">
               <p>Are you sure that you want to Delete?</p>
               <button type="button" class="btn btn-primary" style="margin: 4px;" (click)="deleteitem(record)" >Yes </button>
-              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+              <button type="button" class="btn btn-primary" (click)="decline()">No</button>
             </div>
           </ng-template>
       </td>
