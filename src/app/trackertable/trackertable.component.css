@@ -5,6 +5,10 @@
 .table{
     color: #fff;
 }
+i{
+    cursor: pointer;
+    padding: 0 5px;
+}
 #filterInput{
     color: #fff;
     border: none;

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,TemplateRef} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SendRecordsService } from '../shared/services/send-records.service';
 import { FilterService } from '../shared/services/filter.service';
+import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'trackertable',
@@ -9,8 +10,10 @@ import { FilterService } from '../shared/services/filter.service';
   styleUrls: ['./trackertable.component.css']
 })
 export class TrackertableComponent implements OnInit {
+  modalRef: BsModalRef;
+  message: string;
   subscription: Subscription;
-  constructor(private filters: FilterService, public receiveRecord: SendRecordsService) { }
+  constructor(private filters: FilterService, public receiveRecord: SendRecordsService,  private modalService: BsModalService) { }
 
   // variables for processing a transaction
   records:{ user:string, desc:string, income:number, expense:number, date:any}[] = [];
@@ -63,6 +66,24 @@ export class TrackertableComponent implements OnInit {
         console.log(this.filtered); 
       }
     })   
+  }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  
+  deleteitem(record): void{ 
+   this.records =this.records.filter( t => t.income!==record.income);
+   this.message = 'Confirmed!';
+   this.modalRef.hide();
+   /* this.totalExpense = this.expenses.reduce(function(a, b){
+    return Number(a) + Number(b);
+    }, 0); */ 
+    console.log(record);
+ }
+ 
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 
   filterTable(){  
