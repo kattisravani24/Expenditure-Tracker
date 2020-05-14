@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { SendRecordsService } from '../shared/services/send-records.service';
 import { FilterService } from '../shared/services/filter.service';
 import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
+import { any } from '@amcharts/amcharts4/.internal/core/utils/Array';
 
 @Component({
   selector: 'trackertable',
@@ -100,6 +101,14 @@ export class TrackertableComponent implements OnInit {
    this.records =this.records.filter( t => t.income!==record.income);
    this.message = 'Confirmed!';
    this.modalRef.hide();
+  deleteitem(record): void{ 
+   const i =this.records.findIndex( t => t.user===record);
+   if(record !== 1){
+    this.records.splice(record,1);
+  }
+   this.message = 'Confirmed!';
+   this.modalRef.hide();
+
     console.log(record);
  } */
 
