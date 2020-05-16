@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { SendRecordsService } from '../shared/services/send-records.service';
 import { FilterService } from '../shared/services/filter.service';
 import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
-import { any } from '@amcharts/amcharts4/.internal/core/utils/Array';
 
 @Component({
   selector: 'trackertable',
@@ -72,18 +71,32 @@ export class TrackertableComponent implements OnInit {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
   
-  deleteitem(record): void{ 
-   const i =this.records.findIndex( t => t.user===record);
-   if(record !== 1){
-    this.records.splice(record,1);
-  }
+  deleteitem(user): void{ 
+   const i= this.records.findIndex( t => t.user===user);
+    if(i !== 1){
+     this.records.splice(i,1);
+        //Calculating total income 
+ this.totalIncome = this.incomes.reduce(function(a, b){
+  return Number(a) + Number(b);
+  }, 0);
+//Calculating total expenses 
+this.totalExpense = this.expenses.reduce(function(a, b){
+  return Number(a) + Number(b);
+  }, 0);
+// Calculating total saving
+this.savings = this.totalIncome - this.totalExpense;
+// If saving is less than 0 showing warning message to the user
+if(this.savings < 0){
+  this.draft = true;
+}else if(this.savings > 0){
+  this.draft = false;
+}
+   }
    this.message = 'Confirmed!';
    this.modalRef.hide();
-   /* this.totalExpense = this.expenses.reduce(function(a, b){
-    return Number(a) + Number(b);
-    }, 0); */ 
-    console.log(record);
+   
  }
+ 
  
   decline(): void {
     this.message = 'Declined!';
