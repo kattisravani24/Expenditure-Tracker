@@ -51,7 +51,7 @@ export class FiltersComponent implements OnInit {
     this.users = [
       { name:'Ahemmed', checked: true, shown: true }, 
       { name:'Dileep', checked: true, shown: true }, 
-      { name:'Sravani', checked: true, shown: true }, 
+      { name:'Malathi', checked: true, shown: true }, 
       { name:'Suman', checked: true, shown: false }
     ];
     this.types = [
@@ -99,13 +99,13 @@ export class FiltersComponent implements OnInit {
       }else if(val.checked == true){
         this.deselectedAllUsers = true;
         this.selectedAllUsers = false;
-      }
+      } 
     })  
   }
   getMonth(myMonth){
     if(myMonth.checked === true){
-      this.selectedUsers.push(myMonth.value);
-      console.log(this.selectedUsers);
+      this.selectedMonths.push(myMonth.value);
+      console.log(this.selectedMonths);
       this.sendSelectedValues();
     }
     if(myMonth.checked == false){

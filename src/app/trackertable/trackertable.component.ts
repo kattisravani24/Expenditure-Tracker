@@ -28,8 +28,12 @@ export class TrackertableComponent implements OnInit {
   filtered: any[] = [];
   test;
   users: string[] = [];
+  dates:any[] = [];
+  months:any[] = [];
+  types:any[] = [];
 
   ngOnInit(){ 
+    
     /**
      * Subscribing to recieve record service and getting the transaction values
      */
@@ -38,7 +42,28 @@ export class TrackertableComponent implements OnInit {
         this.records.push(val);
         this.incomes.push(val.income);
         this.expenses.push(val.expense);
+
+        //Getting months from selected date
+        this.dates.push(val.date);
+        var dt = new Date(val.date);
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",  "October", "November", "December"];
+        //console.log('date is '+this.dates);
+        this.months.push(monthNames[dt.getMonth()]);
+        console.log('Entered Month: ' + this.months);
+
+        //Getting users from selected users
         this.users.push(val.user);
+        console.log('Entered User: ' + this.users);
+
+        //Getting types from selected users
+        if(val.income > 0){
+          this.types.push('Income');
+          console.log('Entered Type: ' + this.types);
+        }else if(val.expense > 0){
+          this.types.push('Expenditure');
+          console.log('Entered Type: ' + this.types);
+        }
+
       }else{
         this.records = [];
       } 
@@ -63,7 +88,7 @@ export class TrackertableComponent implements OnInit {
     this.subscription = this.filters.getFilteredValues().subscribe(val => {
       if(val){
         this.filtered.push(val);
-        console.log(this.filtered); 
+        //console.log(this.filtered); 
       }
     })   
   }
@@ -96,6 +121,8 @@ if(this.savings < 0){
    this.modalRef.hide();
    
  }
+
+
  
  
   decline(): void {
@@ -105,14 +132,32 @@ if(this.savings < 0){
 
   filterTable(){  
     let temp = [];
-    console.log(this.users);
-    console.log(this.filtered[0].users);
     for(var i=0; i<this.users.length; i++){
       for(var j=0; j<this.filtered.length; j++){
-        if(this.users[i].includes(this.filtered[j].users)){
+        if(
+            (this.users[i].includes(this.filtered[j].users)) || 
+            (this.months[i].includes(this.filtered[j].months)) || 
+            (this.types[i].includes(this.filtered[j].types)) || 
+            ((this.users[i].includes(this.filtered[j].users)) && ((this.months[i].includes(this.filtered[j].months)))) ||
+            ((this.users[i].includes(this.filtered[j].users))) && ((this.types[i].includes(this.filtered[j].types))) ||
+            ((this.months[i].includes(this.filtered[j].months))) && ((this.types[i].includes(this.filtered[j].types))) ||
+            ((this.users[i].includes(this.filtered[j].users)) && (this.months[i].includes(this.filtered[j].months)) && this.types[i].includes(this.filtered[j].types))
+          ){
           temp.push(this.filtered[j].users);
+          /* this.records.includes(this.filtered[j].users);
+          console.log('Matching record is ' + this.records); */
+          temp.push(this.filtered[j].months); 
+          temp.push(this.filtered[j].types);
+        }
+        else{
+          console.log('No matching records found');
         }
       }
-    }   
+      /* console.log('Filtered Users' + this.filtered[0].users);
+      console.log('Filtered Months' + this.filtered[0].months);
+      console.log('Filtered Types' + this.filtered[0].types);  */
+    }  
+    
+    console.log("Matching record: " + temp);
   }
 }
