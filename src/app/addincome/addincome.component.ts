@@ -59,7 +59,7 @@ expenseForm:FormGroup;
     this.transaction.sendTransaction({user: expenseUser.value, desc: desc2.value, expense: expense.value, income: 0.0, date: expenseDate.value});
   } 
   get incomeDescription(){
-    return this.incomeForm.get('incomeDescription');
+    return this.incomeForm.get('incomeDescription'); 
   }
   get incomeAmount(){
     return this.incomeForm.get('incomeAmount');

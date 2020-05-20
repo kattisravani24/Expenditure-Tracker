@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,7 @@ export class RecordsService {
   sendRecords(record:{desc:string, amount:number, exAmount:number, date:any, user:any}[]){
     this.subject.next(record);
   } 
- 
+  
   getRecord(): Observable<any>{
     return this.subject.asObservable();
   } 
