@@ -3,14 +3,14 @@
     <div class="col-sm-12"><!--row ends-->
       <!-- <button class="btn btn-primary" (click)="sendSelectedValues()">Send Values</button><br/><br/> -->
 
-      <!--Months filter start here...--> 
+      <!--Months filter start here...-->
       <h5>Month</h5>
       <ng-container *ngIf="selectedAllMonths"><!--To select all months-->
         <small (click)="selectAllMonths()">Select All</small>
       </ng-container><!--To deselect all months-->
-      <ng-container *ngIf="deselectedAllMonths"> 
-        <small (click)="deselecteAllMonths()">Clear All</small> 
-      </ng-container> 
+      <ng-container *ngIf="deselectedAllMonths">
+        <small (click)="deselecteAllMonths()">Clear All</small>
+      </ng-container>
       <!--Months list-->
       <div *ngFor="let month of months">
         <ng-container *ngIf="month.shown">
@@ -29,14 +29,14 @@
       <!--Users filter start here...-->
       <h5>User</h5>
       <ng-container *ngIf="selectedAllUsers"><!--To select all users-->
-        <small (click)="selectAllUSers()">Select All</small> 
+        <small (click)="selectAllUSers()">Select All</small>
       </ng-container><!--To deselect all users-->
       <ng-container *ngIf="deselectedAllUsers">
         <small (click)="deselecteAllUsers()">Clear All</small>
       </ng-container>
       <div *ngFor="let user of users">
         <ng-container *ngIf="user.shown">
-          <input type="checkbox" [(ngModel)]="user.checked" #myUser (change)="getUser(myUser)" [value]="user.name"> 
+          <input type="checkbox" [(ngModel)]="user.checked" #myUser (change)="getUser(myUser)" [value]="user.name">
           <span> {{user.name}}</span>
         </ng-container>
       </div>
@@ -51,13 +51,13 @@
       <!--Type filter start here...-->
       <h5>Type</h5>
       <ng-container *ngIf="selectedAllTypes"><!--To select all users-->
-        <small (click)="selectAllTypes()">Select All</small> 
+        <small (click)="selectAllTypes()">Select All</small>
       </ng-container><!--To deselect all users-->
       <ng-container *ngIf="deselectedAllTypes">
         <small (click)="deselecteAllTypess()">Clear All</small>
       </ng-container>
       <div *ngFor="let type of types">
-        <input type="checkbox" [(ngModel)]="type.checked" #myType (change)="getType(myType)" [value]="type.name"> 
+        <input type="checkbox" [(ngModel)]="type.checked" #myType (change)="getType(myType)" [value]="type.name">
         <span> {{type.name}}</span>
       </div>
       <!--Type filter ends here...--> 

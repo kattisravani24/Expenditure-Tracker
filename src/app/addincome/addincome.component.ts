@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SelectItem} from 'primeng/api';
 import { SendRecordsService } from '../shared/services/send-records.service';
+import { BackendService } from '../shared/services/backend.service';
 @Component({
   selector: 'addincome',
   templateUrl: './addincome.component.html',
@@ -12,8 +13,8 @@ users: SelectItem[];
 selectedUser: SelectItem;
 incomeForm:FormGroup;
 expenseForm:FormGroup;
- constructor(private transaction: SendRecordsService) { }
-  ngOnInit(): void { 
+ constructor(private transaction: SendRecordsService, private service: BackendService) { }
+  ngOnInit(): void {
     this.users = 
     [
       {label: "(Select User)", value: "Select User"},
@@ -36,6 +37,23 @@ expenseForm:FormGroup;
   }
   sendIncome(desc, amount, incomeDate, incomeUser){
     this.transaction.sendTransaction({user: incomeUser.value, desc: desc.value, income: amount.value, expense: 0.0, date: incomeDate.value});
+    this.service.getTableData().subscribe(data => {
+      console.log(data);
+    }) 
+    let test = 
+    {
+      "fields": 
+      { 
+        "type": { "stringValue": "test-api" }, 
+        "income": { "stringValue": "amount" }, 
+        "expenditure": { "stringValue": "0.0" }, 
+        "description": { "stringValue": "desc" },
+        "username": {"stringValue": "incomeUser"}
+        }
+    }
+    this.service.saveData(test).subscribe(data => {
+      console.log(data);
+    })
   }
   sendExpense(desc2, expense, expenseDate, expenseUser){ 
     this.transaction.sendTransaction({user: expenseUser.value, desc: desc2.value, expense: expense.value, income: 0.0, date: expenseDate.value});
@@ -51,7 +69,7 @@ expenseForm:FormGroup;
   }
   get validateIncomeUser(){
     return this.expenseForm.get('validateIncomeUser'); 
-  } 
+  }
   get expenseDescription(){
     return this.expenseForm.get('expenseDescription'); 
   }

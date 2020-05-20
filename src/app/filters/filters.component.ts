@@ -279,6 +279,11 @@ getType(myType){
   }
   
   sendSelectedValues(){
-    this.filterService.sendFilteredValues({users: this.selectedUsers, months: this.selectedMonths, types: this.selectedTypes});
+    this.filterService.sendFilteredValues(
+      {
+        users: this.selectedUsers, 
+        months: this.selectedMonths, 
+        types: this.selectedTypes
+      });
   }
 }

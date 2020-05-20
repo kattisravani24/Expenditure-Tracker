@@ -3,15 +3,14 @@ class="table"
 [responsive]="true" 
 [globalFilterFields]="['user','desc', 'amount', 'exAmount', 'date']">
   <ng-template pTemplate="caption">
-    <div style="text-align: left">        
+    <div style="text-align: left">
       <input id="filterInput" type="text" pInputText size="50" placeholder="Global Filter" 
       (input)="et.filterGlobal($event.target.value, 'contains')" style="width:auto">
       <i class="pi pi-search" style="margin:4px 4px 0 0" ></i>
-
       <button class="btn btn-primary" (click)="filterTable()">Filter</button>
     </div>
   </ng-template>
-  <ng-template pTemplate="header"> 
+  <ng-template pTemplate="header">
     <tr>
       <th scope="col">S.No</th>
       <th scope="col">User</th>
@@ -20,18 +19,18 @@ class="table"
       <th scope="col">Expenditure</th>
       <th scope="col">Date</th>
       <th scope="col">Action</th>
-    </tr> 
+    </tr>
   </ng-template>
   <ng-template pTemplate="body" let-record  let-i="rowIndex+1">
-    <tr> 
+    <tr>
       <td>{{i}}</td>
-      <td>{{record.user}}</td> 
+      <td>{{record.user}}</td>
       <td>{{record.desc}}</td>
       <td>{{record.income | currency:'INR'}}</td>
       <td>{{record.expense | currency:'INR'}}</td>
       <td>{{record.date | date }}</td>
       <td>
-        <i class="pi pi-pencil"></i> 
+        <i class="pi pi-pencil"></i>
         <i class="pi pi-trash" (click)="openModal(template)"></i>
         <ng-template
          #template>
@@ -42,15 +41,15 @@ class="table"
             </div>
           </ng-template>
       </td>
-    </tr> 
-  </ng-template>  
+    </tr>
+  </ng-template>
 </p-table>
 
 <hr>
 
 <div class="table">
-  <h6>Total Income  - {{totalIncome  | currency:'INR'}}</h6>
-  <h6>Total Expense - {{totalExpense  | currency:'INR'}}</h6>
+  <h6>Total Income - {{totalIncome | currency:'INR'}}</h6>
+  <h6>Total Expense - {{totalExpense | currency:'INR'}}</h6>
 </div>
 <!-- 
 <button class="btn btn-success" (click)="sendRecords()"> Print Records</button> 
@@ -60,7 +59,7 @@ class="table"
 <div class="alert alert-primary container">
    <h6 class="text-success"> Total Savings: {{savings  | currency:'INR'}}</h6>
    <h6 class="alert alert-danger" *ngIf="draft" >Running out of Balance</h6>
-</div>  
+</div>
 
 <!-- <ul style="color: #fff;" *ngFor="let value of uniqueReceivedValues">
   <li>{{value}}</li>

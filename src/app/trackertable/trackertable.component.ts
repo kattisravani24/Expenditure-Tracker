@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { SendRecordsService } from '../shared/services/send-records.service';
 import { FilterService } from '../shared/services/filter.service';
 import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
-import { any } from '@amcharts/amcharts4/.internal/core/utils/Array';
 
 @Component({
   selector: 'trackertable',

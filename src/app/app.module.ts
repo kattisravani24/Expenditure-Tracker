@@ -6,7 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddincomeComponent } from './addincome/addincome.component';
 import { TrackertableComponent } from './trackertable/trackertable.component'; 
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { LoginComponent } from './login/login.component';
+import { ChartholderComponent } from './chartholder/chartholder.component';
+import { PiechartComponent } from './charts/piechart/piechart.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { Pie2Component } from './charts/pie2/pie2.component';
+import { SendComponent } from './records/send/send.component';
+import { ReceiveComponent } from './records/receive/receive.component';
+import { FiltersComponent } from './filters/filters.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {TableModule} from 'primeng/table';
@@ -16,22 +24,16 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {DropdownModule} from 'primeng/dropdown';
 import {PasswordModule} from 'primeng/password';
 
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {RouterModule} from'@angular/router';
-import { ChartholderComponent } from './chartholder/chartholder.component';
-import { PiechartComponent } from './charts/piechart/piechart.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { Pie2Component } from './charts/pie2/pie2.component';
-import { SendComponent } from './records/send/send.component';
-import { ReceiveComponent } from './records/receive/receive.component';
-import { FiltersComponent } from './filters/filters.component';
 
 import { RecordsService } from './shared/services/records.service';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -53,13 +55,13 @@ import { environment } from '../environments/environment';
     ModalModule.forRoot(),
     FormsModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot(),
     TableModule,
     CheckboxModule,
     CalendarModule,
     MultiSelectModule,
     DropdownModule,
     PasswordModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
       [
