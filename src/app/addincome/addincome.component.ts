@@ -18,10 +18,10 @@ expenseForm:FormGroup;
     this.users = 
     [
       {label: "(Select User)", value: "Select User"},
-      {label: 'Ahemmed', value: 'Ahemmed'},
-      {label: 'Dileep', value: 'Dileep'},
-      {label: 'Suman', value: 'Suman'},
-      {label: 'Malathi', value: 'Malathi'}
+      {label: 'Aadya', value: 'Aadya'},
+      {label: 'Aadvik', value: 'Aadvik'},
+      {label: 'Malathi', value: 'Malathi'},
+      {label: 'Sravani', value: 'Sravani'}
     ];
     this.incomeForm = new FormGroup({
       incomeDescription: new FormControl('',Validators.required),
@@ -32,7 +32,8 @@ expenseForm:FormGroup;
     this.expenseForm = new FormGroup({
       expenseDescription: new FormControl('',Validators.required),
       expenseAmount: new FormControl('', Validators.required),
-      validateExpenseDate: new FormControl('', Validators.required)
+      validateExpenseDate: new FormControl('', Validators.required),
+      validateExpenseUser: new FormControl('',Validators.required)
     })
   }
   sendIncome(desc, amount, incomeDate, incomeUser){
@@ -78,5 +79,8 @@ expenseForm:FormGroup;
   }
   get validateExpenseDate(){
     return this.expenseForm.get('validateExpenseDate');
+  }
+  get validateExpenseUser(){
+    return this.expenseForm.get('validateExpenseUser'); 
   }
 } 

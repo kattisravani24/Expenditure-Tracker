@@ -49,36 +49,15 @@ export class FiltersComponent implements OnInit {
 
     ];
     this.users = [
-      { name:'Ahemmed', checked: true, shown: true }, 
-      { name:'Dileep', checked: true, shown: true }, 
+      { name:'Aadya', checked: true, shown: true }, 
+      { name:'Aadvik', checked: true, shown: true }, 
       { name:'Malathi', checked: true, shown: true }, 
-      { name:'Suman', checked: true, shown: false }
+      { name:'Sravani', checked: true, shown: false }
     ];
     this.types = [
       {name:'Income', checked:true}, 
       {name:'Expenditure', checked:true}
     ];
-
-    /* for(var i=0; i<this.months.length; i++){
-      if(this.months[i].checked == true){
-        this.selectedMonths.push(this.months[i].name);
-      }
-    }
-    console.log(this.selectedMonths);
-    for(var i=0; i<this.users.length; i++){
-      if(this.users[i].checked == true){
-        this.selectedUsers.push(this.users[i].name);
-      }
-    }
-    console.log(this.selectedUsers);
-    for(var i=0; i<this.types.length; i++){
-      if(this.types[i].checked == true){
-        this.selectedTypes.push(this.types[i].name);
-      }
-    } 
-    console.log(this.selectedTypes);
-    this.selectedValues = this.selectedMonths.concat(this.selectedUsers, this.selectedTypes);
-    console.log(this.selectedValues); */
   }
 
   getUser(myUser){
